@@ -26,10 +26,10 @@ function App() {
         </div>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<DashboardScreen />} />
+            <Route path="/dashboard" element={<DashboardScreen />} />
 
             <Route path="/welcome" element={<Welcome />} />
-
+            <Route path="/" element={<Main />} />
             <Route path="/textEditor" element={<RichTextEditor />} />
             <Route path="/blogView" element={<BlogView />} />
           </Routes>

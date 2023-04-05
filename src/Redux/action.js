@@ -58,6 +58,25 @@ export const loadblogdata = () => async (dispatch) => {
 };
 
 
+export const loadFile = () => async (dispatch) => {
+  dispatch({
+    type: types.GET_FILE_REQUEST,
+    payload: {},
+  });
+  try {
+    axios.get("http://localhost:3000/apidata").then((response) => {
+      dispatch({
+        type: types.GET_FILE_SUCCESS,
+        payload: response.data,
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 // export const uploadImages = (obj) => async (dispatch) => {
 //   console.log("formData",obj)
 //     dispatch({

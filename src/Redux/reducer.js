@@ -87,9 +87,18 @@ const usersReducer = (state = initialState, action) => {
 
 
 
-
-
-
+      case types.GET_FILE_REQUEST:
+        return {
+          ...state,
+          users: action.payload,
+          loading: true,
+        };
+      case types.GET_FILE_SUCCESS:
+        return {
+          ...state,
+          users: action.payload,
+          loading: false,
+        };
 
 
 
