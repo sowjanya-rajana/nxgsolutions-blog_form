@@ -1,5 +1,7 @@
 import { useRef, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -28,6 +30,7 @@ import {
     blogloading,
     AddBlog,
 } from "../Redux/action";
+import { Form } from 'react-bootstrap';
 
 
 
@@ -44,6 +47,7 @@ const categories = [
 
 const TextEditor = () => {
     const editor = useRef(null);
+    //const{quill,quillRef}=useQuill();
 
 
 
@@ -67,7 +71,7 @@ const TextEditor = () => {
     // console.log("errorData", error)
 
 
-    const { register, handleSubmit, formState: { errors }, setValue, } = useForm();
+    const { register, handleSubmit, watch, formState: { errors }, setValue, } = useForm();
 
 
     useEffect(() => {
@@ -86,7 +90,7 @@ const TextEditor = () => {
 
     const [Title, setTitle] = useState("");
     // const [blogcategory, setBlogcategory] = useState("");
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState('');
     const [image, setImage] = useState("");
     //const [error, seterror] = useState("");
     // const [value, setValue] = useState('');
@@ -144,9 +148,13 @@ const TextEditor = () => {
     };
 
 
-
+    console.log("watch", watch('blogcategory', 'b'))
     return (
         <React.Fragment>
+
+
+
+
             <form onSubmit={handleSubmit(toaddUser)}>
                 <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}>
                     <Box sx={{ padding: 5 }}>
@@ -248,7 +256,7 @@ const TextEditor = () => {
                                     </Select>
                                     {/* <FormHelperText>Error</FormHelperText> */}
                                     {console.log("errorcategory", errors)}
-                                    {errors?.blogcategory?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This is required field</p>)}
+                                    {category ? "" : errors?.blogcategory?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This is required field</p>)}
                                     {/* {errors?.blogcategory?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
                                     {errors?.blogcategory?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)} */}
 
@@ -327,25 +335,60 @@ const TextEditor = () => {
                                     Discription
                                 </InputLabel>
                             </Grid>
+                            {/* <Grid item xs={12} sm={10}>
+                                <FormControl fullWidth size="small">
+                                    <JoditEditor
+                                        // ref={editor} value={description} onChange={content => setDescription(content)}
+                                        {...register("description", {
+                                            required: true,
+
+
+                                            maxLength: 50,
+                                            minLength: 3,
+                                            // autoComplete: "off",
+                                            // variant: "outlined",
+
+
+                                        })}
+                                        ref={editor} value={description} onChange={content => setDescription(content)}
+                                    />
+
+                                    {console.log("description", description)}
+                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
+                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
+                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
+
+                                </FormControl>
+
+
+
+                            </Grid> */}
                             <Grid item xs={12} sm={10}>
-                                <JoditEditor
-                                    ref={editor} onChange={content => setDescription(content)}
-                                    {...register("description", {
-                                        required: true,
+                                <FormControl fullWidth size="small">
+                                    <ReactQuill theme="snow"
+
+                                        {...register("description", {
+                                            required: true,
 
 
-                                        maxLength: 50,
-                                        minLength: 3,
-                                        // autoComplete: "off",
-                                        // variant: "outlined",
+                                            maxLength: 50,
+                                            minLength: 3,
+                                            // autoComplete: "off",
+                                            // variant: "outlined",
 
 
-                                    })}
+                                        })}
+                                        value={description} onChange={setDescription}
+                                    />
 
-                                />
-                                {errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
+                                    {console.log("description", description)}
+                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
+                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
+                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
+
+                                </FormControl>
+
+
 
                             </Grid>
 

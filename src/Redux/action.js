@@ -37,7 +37,7 @@ export const loadblogdata = () => async (dispatch) => {
 
   });
   try {
-    axios.get("https://6422806b001cb9fc20282210.mockapi.io/blo").then((res) => {
+    axios.get("https://6422806b001cb9fc20282210.mockapi.io/blog").then((res) => {
       console.log("blogrequest", res)
       dispatch({
         type: types.GET_BLOG_DATA_SUCCESS,
@@ -56,3 +56,31 @@ export const loadblogdata = () => async (dispatch) => {
   }
 
 };
+
+
+// export const uploadImages = (obj) => async (dispatch) => {
+//   console.log("formData",obj)
+//     dispatch({
+//       type: types.UPLOAD_IMAGES_REQUEST,
+//       payload: {},
+//     });
+//   try {
+//     const responseofImage = await axios.post(
+//       "http://localhost:3000/apidata",
+//       obj
+//     );
+//     console.log("responseofImage",responseofImage)
+
+    
+//       dispatch({
+//         type: types.UPLOAD_IMAGES_SUCCESS,
+//         payload: responseofImage,
+//       });
+    
+//   } catch (error) {
+//     dispatch({
+//       type: types.UPLOAD_IMAGES_FAILURE,
+//       payload: error,
+//     });
+//   }
+// };

@@ -8,6 +8,9 @@ import Main from "./Screens/Main";
 import RichTextEditor from "./Screens/RichTextEditor";
 import TextEditor from "./Screens/TextEditor";
 import BlogView from "./Screens/BlogView";
+import AppBarAddBlog from "./Components/AppBarAddBlog";
+import LeftBar from "./Components/LeftBar";
+import DashboardScreen from "./Screens/DashboardScreen";
 
 function App() {
 
@@ -23,7 +26,7 @@ function App() {
         </div>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<TextEditor />} />
+            <Route path="/" element={<DashboardScreen />} />
 
             <Route path="/welcome" element={<Welcome />} />
 

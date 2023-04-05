@@ -96,7 +96,7 @@ const BlogView = () => {
         </Typography>
       </div>
       <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-        {getblogloading == false ? <div>
+        {getblogloading == true ? <div>
           <Typography variant="h6" gutterBottom color="black" sx={{ paddingBottom: 5 }}>
             Loading.....
           </Typography>
@@ -119,7 +119,7 @@ const BlogView = () => {
 
                 {
 
-                  getblogloading == false ? blog?.map((row, key) => (
+                  blog?.map((row, key) => (
 
                     <TableRow
                       key={row.id}
@@ -136,7 +136,7 @@ const BlogView = () => {
 
 
 
-                  )) : ""
+                  ))
                 }
               </TableBody>
             </Table>

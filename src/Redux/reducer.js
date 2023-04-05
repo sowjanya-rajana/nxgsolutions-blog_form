@@ -59,21 +59,30 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         blog: action.payload,
-        getblogloading: false,
-        // getblogloading: true,
+        // getblogloading: false,
+        getblogloading: true,
       };
     case types.GET_BLOG_DATA_SUCCESS:
       console.log("action.payloadaction.payload", action.payload)
       return {
-        getblogloading: true,
+        //getblogloading: true,
         ...state,
         blog: action.payload,
-        //getblogloading: false
+        getblogloading: false
       };
     case types.GET_BLOG_DATA_FAIL:
       return {
         ...state,
         errorMessage: action.payload,
+        getblogloading: false
+      }
+    case types.UPLOAD_IMAGES_REQUEST:
+      return {
+
+      }
+    case types.UPLOAD_IMAGES_SUCCESS:
+      return {
+
       }
 
 

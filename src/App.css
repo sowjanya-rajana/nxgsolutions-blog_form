@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.leftbar{
+  width: 200px;
+  background: #1976d2;
+  color: #ffff;
+  min-height: 450px;
+  overflow: auto;
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
