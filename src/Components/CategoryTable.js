@@ -93,7 +93,8 @@ const CategoryTable = () => {
         <>
 
 
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+
+            <Paper elevation={3} sx={{ width: '98%', overflow: 'hidden', }}>
                 {getblogloading == true ? <div>
                     <Typography variant="h6" gutterBottom color="black" sx={{ paddingBottom: 5 }}>
                         Loading.....

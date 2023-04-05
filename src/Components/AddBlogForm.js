@@ -156,7 +156,7 @@ const AddBlogForm = () => {
 
 
             <form onSubmit={handleSubmit(toaddUser)}>
-                <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}>
+                <Paper elevation={3} sx={{ marginRight: "30%" }}>
                     <Box sx={{ padding: 5 }}>
                         <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
                             Add Blog
@@ -279,8 +279,9 @@ const AddBlogForm = () => {
                                 </InputLabel>
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <Button>
-                                    <UploadFileIcon />
+                                <Button variant="outlined" justifyContent='center'>
+                                    Choose File
+                                    {/* <UploadFileIcon /> */}
                                 </Button>
                             </Grid>
                             <Grid item xs={12} sm={2}>
@@ -406,7 +407,7 @@ const AddBlogForm = () => {
                     </Box>
                 </Paper>
 
-                <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%", marginTop: "2%", marginBottom: "2%" }}>
+                <Paper elevation={3} sx={{ marginRight: "30%", marginTop: "2%", marginBottom: "2%" }}>
                     <Box sx={{ padding: 5 }}>
                         <Typography variant="h6" textAlign="left" gutterBottom sx={{ paddingBottom: 5 }}>
                             Blog SEO
