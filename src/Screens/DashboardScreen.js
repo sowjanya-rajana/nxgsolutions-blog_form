@@ -2,6 +2,8 @@ import React from 'react'
 import AppBarAddBlog from '../Components/AppBarAddBlog'
 import LeftBar from '../Components/LeftBar'
 import LeftNavBar from '../Components/LeftNavBar'
+import BlogCategoryForm from '../Components/BlogCategoryForm'
+
 import Blog_view from '../Components/Blog_view'
 import { Grid } from '@mui/material'
 
