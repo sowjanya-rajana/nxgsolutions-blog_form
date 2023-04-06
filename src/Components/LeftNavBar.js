@@ -51,10 +51,10 @@ export default function LeftNavBar() {
                         </List>
                     </Box>
                 </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <Toolbar />
                     <BlogCategoryForm />
-                </Box>
+                </Box> */}
 
             </Box>
 

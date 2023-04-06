@@ -80,8 +80,6 @@ function AppBarAddBlog() {
                             Back to manage
                             Store
                         </Typography>
-
-
                     </Box>
                     {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
 

@@ -1,30 +1,30 @@
-import React from 'react'
-import AppBarAddBlog from '../Components/AppBarAddBlog'
-import LeftBar from '../Components/LeftBar'
-import LeftNavBar from '../Components/LeftNavBar'
-import BlogCategoryForm from '../Components/BlogCategoryForm'
+import React from "react";
+import AppBarAddBlog from "../Components/AppBarAddBlog";
+import LeftBar from "../Components/LeftBar";
+import LeftNavBar from "../Components/LeftNavBar";
+import BlogCategoryForm from "../Components/BlogCategoryForm";
 
-import Blog_view from '../Components/Blog_view'
-import { Grid } from '@mui/material'
+import Blog_view from "../Components/Blog_view";
+import { Box, Grid, Toolbar } from "@mui/material";
 
 function DashboardScreen() {
-    return (
-        <>
-        <div>
-            <Grid container>
-       
-            <AppBarAddBlog />
-            {/* <LeftBar /> */}
-            <Grid item xs={4} sm={4} md={4} lg={4}>
-            <LeftNavBar /></Grid>
-            
-            <Grid item xs={8} sm={8} md={8} lg={9}>
-            <Blog_view/></Grid>
-            </Grid>
-        </div>
-       
-        </>
-    )
+  return (
+    <>
+     
+       <Box  sx={{display : 'flex' }}>
+          <AppBarAddBlog />
+          {/* <LeftBar /> */}
+
+          <LeftNavBar />
+  {/* <Grid item xs={10} sm={10} md={10} lg={10}> */}
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Toolbar />
+            <Blog_view />
+          </Box>
+          </Box>
+     
+    </>
+  );
 }
 
-export default DashboardScreen
+export default DashboardScreen;
