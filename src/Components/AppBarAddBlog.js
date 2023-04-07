@@ -22,7 +22,7 @@ function AppBarAddBlog() {
     return (
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
+                <Toolbar  >
                     {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                     <Box sx={{ flexGrow: 0 }}>
 
@@ -39,7 +39,7 @@ function AppBarAddBlog() {
                             mr: 10,
                             marginLeft: 10,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            // fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
@@ -47,7 +47,7 @@ function AppBarAddBlog() {
                             flexGrow: 1,
                         }}
                     >
-                        Store Name
+                        NXG ecom
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -70,10 +70,10 @@ function AppBarAddBlog() {
                                 // mr: 10,
                                 // marginLeft: 10,
                                 display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
+                                // fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
-                                color: 'inherit',
+                                color: '#ffff',
                                 textDecoration: 'none',
                             }}
                         >

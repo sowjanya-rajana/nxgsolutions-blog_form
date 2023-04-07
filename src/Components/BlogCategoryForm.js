@@ -24,6 +24,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 
 
+
 import { useSelector, useDispatch } from "react-redux";
 //import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -150,123 +151,125 @@ const BlogCategoryForm = () => {
 
 
             <form onSubmit={handleSubmit(toaddUser)}>
-                {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
-                <Box sx={{ padding: 5, }}>
-                    <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
-                        Blog
-                    </Typography>
+                <Paper elevation={3} sx={{ marginRight: "30%" }}>
+                    {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
+                    <Box sx={{ padding: 5, }}>
+                        <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
+                            Blog
+                        </Typography>
 
-                    <Grid container spacing={3} textAlign={left} >
-                        <Grid item xs={12} sm={12}>
-                            <InputLabel
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: 'left',
-                                    fontWeight: 700,
+                        <Grid container spacing={3} textAlign={left} >
+                            <Grid item xs={12} sm={12}>
+                                <InputLabel
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: 'left',
+                                        fontWeight: 700,
 
-                                }}
-                            >
-                                Category Name
-                            </InputLabel>
+                                    }}
+                                >
+                                    Category Name
+                                </InputLabel>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <TextField
+                                    // minLength={3}
+                                    // maxLength={50}
+                                    color='primary'
+                                    id="outlined-error-helper-text"
+                                    name="title"
+                                    size="small"
+                                    justifyContent='left'
+                                    // fullWidth
+                                    // required
+                                    // label="Title*"
+                                    placeholder='Category Name '
+                                    // type="text"
+                                    autoComplete="off"
+                                    variant="outlined"
+
+                                    {...register("title", {
+                                        required: true,
+                                        onChange: (e) => { setTitle(e.target.value); },
+                                        value: Title,
+                                        maxLength: 50,
+                                        minLength: 3,
+                                        // autoComplete: "off",
+                                        // variant: "outlined",
+
+
+                                    })}
+
+
+                                />
+                                {errors?.title?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
+                                {errors?.title?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
+                                {errors?.title?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
+
+                            </Grid>
+
+
+
+
+
+
+
+                            <Grid item xs={12} sm={2}>
+                                <InputLabel
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "left",
+                                        fontWeight: 700
+                                    }}
+                                >
+                                    Image
+                                </InputLabel>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <Button color='primary' variant="outlined" justifyContent='left'>
+                                    Choose File
+                                    {/* <UploadFileIcon /> */}
+                                </Button>
+                            </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {/* </Paper> */}
+
+
+                            <Grid item xs={12} sm={6} />
+                            <Grid item xs={12} sm={5} />
+                            <Grid item xs={12} sm={4}  >
+                                <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
+                                    Save
+                                </Button>
+
+                            </Grid>
+                            <Grid item xs={12} sm={5} />
+                            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                                < CategoryTable />
+                            </Box>
                         </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <TextField
-                                // minLength={3}
-                                // maxLength={50}
-                                id="outlined-error-helper-text"
-                                name="title"
-                                size="small"
-                                justifyContent='left'
-                                // fullWidth
-                                // required
-                                // label="Title*"
-                                placeholder='Category Name '
-                                // type="text"
-                                autoComplete="off"
-                                variant="outlined"
-
-                                {...register("title", {
-                                    required: true,
-                                    onChange: (e) => { setTitle(e.target.value); },
-                                    value: Title,
-                                    maxLength: 50,
-                                    minLength: 3,
-                                    // autoComplete: "off",
-                                    // variant: "outlined",
-
-
-                                })}
-
-
-                            />
-                            {errors?.title?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
-                            {errors?.title?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                            {errors?.title?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
-
-                        </Grid>
-
-
-
-
-
-
-
-                        <Grid item xs={12} sm={2}>
-                            <InputLabel
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "left",
-                                    fontWeight: 700
-                                }}
-                            >
-                                Image
-                            </InputLabel>
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <Button variant="outlined" justifyContent='left'>
-                                Choose File
-                                {/* <UploadFileIcon /> */}
-                            </Button>
-                        </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {/* </Paper> */}
-
-
-                        <Grid item xs={12} sm={6} />
-                        <Grid item xs={12} sm={5} />
-                        <Grid item xs={12} sm={4}  >
-                            <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
-                                Save
-                            </Button>
-
-                        </Grid>
-                        <Grid item xs={12} sm={5} />
-                        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                            < CategoryTable />
-                        </Box>
-                    </Grid>
-                </Box>
-
+                    </Box>
+                </Paper>
             </form>
 
         </React.Fragment >

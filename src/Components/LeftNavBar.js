@@ -1,4 +1,5 @@
-import * as React from 'react';
+import *  as React from 'react';
+import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -15,33 +16,73 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BlogCategoryForm from './BlogCategoryForm';
 import AddBlogForm from './AddBlogForm';
+import { useParams, useLocation, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 
 const drawerWidth = 240;
 
-function handleChange(text) {
-    // if (text === 'Dashboard') {
 
-    // }
-    // else if (text === 'Category') {
-    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-    //         <Toolbar />
-
-    //         <BlogCategoryForm />
-    //     </Box>
-    // }
-    // else if (text === 'Blog') {
-    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-    //         <Toolbar />
-
-    //         <AddBlogForm />
-    //     </Box>
-    // }
-}
 
 export default function LeftNavBar() {
+
+    const params = useParams();
+    const { compo } = params;
+    const location = useLocation();
+    const searchparams = new URLSearchParams(location.search);
+    let type = searchparams.get("type");
+    // const [searchparams,setSearchParams]=useSearch
+    console.log("params", searchparams.get("type"));
     const [Dashboard, UseDatsboard] = React.useState("");
     const [Category, useCategory] = React.useState("");
     const [Blog, useBlog] = React.useState("");
+    const [ismobile, setismobile] = React.useState(false);
+    const [value, setValue] = React.useState({
+        "name": "Dashboard",
+        "url": "/dashboard"
+    });
+
+    const data = [
+        {
+            "name": "Dashboard",
+            "url": "/dashboard"
+        },
+        {
+            "name": "Category",
+            "url": "/category"
+        },
+        {
+            "name": "Blog",
+            "url": "/blog"
+        }
+
+    ]
+
+    // function handleChange(text) {
+    //     if (text === 'Dashboard') {
+    //         setValue('Dashboard');
+    //     }
+    //     else if (text === 'Category') {
+    //         setValue('Category');
+    //     }
+    //     else if (text === 'Blog') {
+    //         setValue('Blog');
+    //     }
+    // }
+    // function handleComponent(value) {
+    //     switch (value) {
+    //         case 'Dashboard':
+    //             return <BlogCategoryForm />;
+    //         case 'Category':
+    //             return <BlogCategoryForm />;
+    //         case 'Blog':
+    //             return <AddBlogForm />;
+    //     }
+    // }
+    // useEffect(() => {
+    //     console.log("check", value);
+    // }, [])
+
 
     return (
         <>
@@ -57,16 +98,19 @@ export default function LeftNavBar() {
                     }}
                 >
                     <Toolbar />
-                    <Box sx={{ overflow: 'auto' }}>
+                    <Box sx={{ overflow: 'auto' }} >
                         <List>
-                            {['Dashboard', 'Category', 'Blog'].map((text, index) => (
-                                <ListItem key={text} disablePadding>
-                                    <ListItemButton>
+                            {data.map((text, index) => (
+                                <ListItem key={text} disablePadding className='mshover' >
+                                    {/* <Link to={text.url} > */}
+                                    <ListItemButton component={Link} to={text.url}>
                                         <ListItemIcon>
                                             {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                                         </ListItemIcon>
-                                        <ListItemText primary={text} onClick={handleChange(text)} />
+
+                                        <ListItemText primary={text.name} onClick={() => setValue(text)} />
                                     </ListItemButton>
+                                    {/* </Link> */}
                                 </ListItem>
                             ))}
                         </List>
@@ -78,9 +122,27 @@ export default function LeftNavBar() {
                 </Drawer>
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <Toolbar />
+                    <div>
+                        {(() => {
+                            switch (value.url) {
+                                case '/dashboard':
+                                    return < AddBlogForm />
+                                case '/category':
+                                    return <BlogCategoryForm />
+                                case '/blog':
+                                    return <AddBlogForm />
 
-                    <BlogCategoryForm />
-                    {/* <AddBlogForm /> */}
+                                default:
+                                    return null
+                            }
+                        })()}
+                    </div>
+
+
+
+
+
+
                 </Box>
 
             </Box>

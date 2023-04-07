@@ -36,6 +36,24 @@
   overflow: auto;
   text-align: center;
 }
+.mshover{
+background-color :#ffff;
+ 
+}
+.mshover:hover{
+  color: #ffff;
+  background-color: #0d6efd;
+  
+}
+.ql-editor{
+  min-height:200px;
+}
+/* List:hover{
+  background-color: #0d6efd;
+} */
+ .menu-icon{
+  display: none;
+ }
 
 @keyframes App-logo-spin {
   from {

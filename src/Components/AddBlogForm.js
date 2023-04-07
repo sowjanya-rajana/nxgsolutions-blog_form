@@ -31,6 +31,7 @@ import {
     AddBlog,
 } from "../Redux/action";
 import { Form } from 'react-bootstrap';
+import { Skeleton } from '@mui/material';
 
 
 
@@ -158,7 +159,7 @@ const AddBlogForm = () => {
             <form onSubmit={handleSubmit(toaddUser)}>
                 <Paper elevation={3} sx={{ marginRight: "30%" }}>
                     <Box sx={{ padding: 5 }}>
-                        <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
+                        <Typography variant="h6" textAlign={'left'} gutterBottom sx={{ paddingBottom: 5 }}>
                             Add Blog
                         </Typography>
 
@@ -167,7 +168,7 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -213,7 +214,7 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -271,11 +272,11 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
-                                    Img Upload
+                                    Image Upload
                                 </InputLabel>
                             </Grid>
                             <Grid item xs={12} sm={12}>
@@ -289,7 +290,7 @@ const AddBlogForm = () => {
                                     sx={{
 
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -329,7 +330,7 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -366,7 +367,7 @@ const AddBlogForm = () => {
                             </Grid> */}
                             <Grid item xs={12} sm={10}>
                                 <FormControl fullWidth size="small">
-                                    <ReactQuill theme="snow"
+                                    <ReactQuill theme="snow" style={{ height: 300 }}
 
                                         {...register("description", {
                                             required: true,
