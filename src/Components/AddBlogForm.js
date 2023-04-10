@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import Stack from '@mui/material/Stack';
 import * as React from "react";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
@@ -501,19 +501,27 @@ const AddBlogForm = () => {
 
                 <Grid item xs={12} sm={6} />
                 <Grid item xs={12} sm={5} />
-                <Grid item xs={12} sm={4}  >
-                    <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
-                        Save
-                    </Button>
-                    <Button variant="contained" color="warning" sx={{ color: "#e7e9f5" }} onClick={() => tocancledata()}>
-                        Cancle
-                    </Button>
-                    <Link to="/blogView ">
-                        <Button variant="contained" color="primary" sx={{ color: "#e7e9f5" }}  >
-                            List View
-                        </Button>
-                    </Link>
-                </Grid>
+
+
+
+                <Box display="flex" justifyContent="center">
+
+                    <Grid item xs={12} sm={4}   >
+                        <Stack direction="row" spacing={2}>
+                            <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }}    >
+                                Save
+                            </Button>
+                            <Button variant="contained" color="warning" sx={{ color: "#e7e9f5" }} onClick={() => tocancledata()}>
+                                Cancle
+                            </Button>
+                            <Link to="/blogView ">
+                                <Button variant="contained" color="primary" sx={{ color: "#e7e9f5" }}  >
+                                    List View
+                                </Button>
+                            </Link>
+                        </Stack>
+                    </Grid>
+                </Box>
                 <Grid item xs={12} sm={5} />
 
             </form>

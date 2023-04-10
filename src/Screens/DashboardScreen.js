@@ -10,7 +10,7 @@ function DashboardScreen() {
         <div>
             <AppBarAddBlog />
             {/* <LeftBar /> */}
-            <LeftNavBar />
+            <LeftNavBar value="true" />
             {/* <BlogCategoryForm /> */}
 
         </div>

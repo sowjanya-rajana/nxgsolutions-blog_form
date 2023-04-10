@@ -14,11 +14,16 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+
 import Select from "@mui/material/Select";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Button from "@mui/material/Button";
 import FormHelperText from '@mui/material/FormHelperText';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 
 
@@ -92,6 +97,7 @@ const BlogCategoryForm = () => {
     const [category, setCategory] = useState('');
     const [metaData, setMetaData] = useState("");
     const [blogTitle, setBlogTitle] = useState("");
+    const [status, setStatus] = useState('Active');
 
     function toaddUser() {
         try {
@@ -141,6 +147,9 @@ const BlogCategoryForm = () => {
         setCategory(event.target.value);
 
     };
+    const handleStatus = (event) => {
+        setStatus(event.target.value);
+    }
 
 
     console.log("watch", watch('blogcategory', 'b'))
@@ -230,6 +239,21 @@ const BlogCategoryForm = () => {
                                     Choose File
                                     {/* <UploadFileIcon /> */}
                                 </Button>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <FormControl>
+                                    <FormLabel>Status</FormLabel>
+
+                                    <RadioGroup
+                                        aria-labelledby="demo-controlled-radio-buttons-group"
+                                        name="radio-buttons-group"
+                                        value={status}
+                                        onChange={handleStatus}
+                                    >
+                                        <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                                        <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
+                                    </RadioGroup>
+                                </FormControl>
                             </Grid>
 
 
