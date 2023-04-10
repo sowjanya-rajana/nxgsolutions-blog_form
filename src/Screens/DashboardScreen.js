@@ -5,13 +5,15 @@ import LeftNavBar from '../Components/LeftNavBar'
 import BlogCategoryForm from '../Components/BlogCategoryForm'
 
 
+
 function DashboardScreen() {
     return (
         <div>
-            <AppBarAddBlog />
+            {/* <AppBarAddBlog /> */}
             {/* <LeftBar /> */}
-            <LeftNavBar value="true" />
+            <LeftNavBar />
             {/* <BlogCategoryForm /> */}
+
 
         </div>
     )

@@ -1,6 +1,7 @@
 import *  as React from 'react';
 import { useEffect } from 'react';
 import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -25,7 +26,7 @@ const drawerWidth = 240;
 
 
 
-export default function LeftNavBar(props) {
+function LeftNavBar(props) {
 
 
 
@@ -47,12 +48,17 @@ export default function LeftNavBar(props) {
         "url": "/dashboard"
     });
 
-    // const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(props.value);
+    const { window } = props;
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    const get_props = (data) => {
+        console.log("child_props", data);
+        setMobileOpen(data);
+    }
+
 
     const data = [
         {
@@ -69,32 +75,34 @@ export default function LeftNavBar(props) {
         }
 
     ]
+    const drawer = (
+        <div>
+            <Toolbar />
+            <Box sx={{ overflow: 'auto' }} >
 
-    // function handleChange(text) {
-    //     if (text === 'Dashboard') {
-    //         setValue('Dashboard');
-    //     }
-    //     else if (text === 'Category') {
-    //         setValue('Category');
-    //     }
-    //     else if (text === 'Blog') {
-    //         setValue('Blog');
-    //     }
-    // }
-    // function handleComponent(value) {
-    //     switch (value) {
-    //         case 'Dashboard':
-    //             return <BlogCategoryForm />;
-    //         case 'Category':
-    //             return <BlogCategoryForm />;
-    //         case 'Blog':
-    //             return <AddBlogForm />;
-    //     }
-    // }
-    // useEffect(() => {
-    //     console.log("check", value);
-    // }, [])
+                <List  >
+                    {data.map((text, index) => (
+                        <ListItem key={text} disablePadding className='mshover'  >
+                            {/* <Link to={text.url} > */}
+                            <ListItemButton component={Link} to={text.url}>
+                                <ListItemIcon>
+                                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                                </ListItemIcon>
 
+                                <ListItemText primary={text.name} onClick={() => (setMobileOpen(!mobileOpen), setValue(text))} />
+                            </ListItemButton>
+                            {/* </Link> */}
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+
+                </List>
+            </Box>
+        </div>
+    );
+    const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
         <>
@@ -105,44 +113,44 @@ export default function LeftNavBar(props) {
 
             }}>
                 <CssBaseline />
-                {/* <AppBarAddBlog /> */}
-                <Drawer
-                    // className={mobileOpen ? 'nav-mobile' : 'nav-link'}
-                    // variant={mobileOpen ? "temporary" : "permanent"}
-                    variant='permanent'
-                    onClick={() => setMobileOpen(false)}
-                    sx={{
-                        width: drawerWidth,
-                        flexShrink: 0,
-                        // display: { xs: 'flex', md: 'none' },
-                        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                    }}
+                <AppBarAddBlog func={get_props} />
+                <Box
+                    component="nav"
+                    sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
+                    aria-label="mailbox folders"
                 >
-                    <Toolbar />
-                    <Box sx={{ overflow: 'auto' }} >
+                    <Drawer
 
-                        <List  >
-                            {data.map((text, index) => (
-                                <ListItem key={text} disablePadding className='mshover'  >
-                                    {/* <Link to={text.url} > */}
-                                    <ListItemButton component={Link} to={text.url}>
-                                        <ListItemIcon>
-                                            {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                                        </ListItemIcon>
+                        // className={mobileOpen ? 'nav-mobile' : 'nav-link'}
+                        // variant={mobileOpen ? "temporary" : "permanent"}
+                        container={container}
+                        variant="temporary"
+                        open={mobileOpen}
+                        onClose={handleDrawerToggle}
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                        sx={{
+                            display: { xs: 'block', md: 'none' },
+                            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        }}
+                    >
+                        {drawer}
 
-                                        <ListItemText primary={text.name} onClick={() => setValue(text)} />
-                                    </ListItemButton>
-                                    {/* </Link> */}
-                                </ListItem>
-                            ))}
-                        </List>
-                        <Divider />
-                        <List>
 
-                        </List>
-                    </Box>
-                </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                    </Drawer>
+                    <Drawer
+                        variant="permanent"
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        }}
+                        open
+                    >
+                        {drawer}
+                    </Drawer>
+                </Box>
+                <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
                     <Toolbar />
                     <div>
                         {(() => {
@@ -172,3 +180,11 @@ export default function LeftNavBar(props) {
         </>
     );
 }
+LeftNavBar.propTypes = {
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window: PropTypes.func,
+};
+export default LeftNavBar;

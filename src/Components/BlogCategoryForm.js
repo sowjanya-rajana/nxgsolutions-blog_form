@@ -217,12 +217,6 @@ const BlogCategoryForm = () => {
 
                             </Grid>
 
-
-
-
-
-
-
                             <Grid item xs={12} sm={2}>
                                 <InputLabel
                                     sx={{

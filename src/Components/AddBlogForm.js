@@ -337,34 +337,7 @@ const AddBlogForm = () => {
                                     Discription
                                 </InputLabel>
                             </Grid>
-                            {/* <Grid item xs={12} sm={10}>
-                                <FormControl fullWidth size="small">
-                                    <JoditEditor
-                                        // ref={editor} value={description} onChange={content => setDescription(content)}
-                                        {...register("description", {
-                                            required: true,
 
-
-                                            maxLength: 50,
-                                            minLength: 3,
-                                            // autoComplete: "off",
-                                            // variant: "outlined",
-
-
-                                        })}
-                                        ref={editor} value={description} onChange={content => setDescription(content)}
-                                    />
-
-                                    {console.log("description", description)}
-                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
-
-                                </FormControl>
-
-
-
-                            </Grid> */}
                             <Grid item xs={12} sm={10}>
                                 <FormControl fullWidth size="small">
                                     <ReactQuill theme="snow" style={{ height: 300 }}

@@ -17,13 +17,13 @@ import LeftNavBar from './LeftNavBar';
 
 
 
-function AppBarAddBlog() {
+function AppBarAddBlog(props) {
     // const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-        <LeftNavBar value="true" />
+        props.func(mobileOpen);
     };
 
     return (
