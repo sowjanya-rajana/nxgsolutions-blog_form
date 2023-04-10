@@ -43,6 +43,10 @@ const Blog_view = () => {
                     </Card>
                   </Grid>
                   // </tr>
+
+
+
+
                 );
               })
             : ""}

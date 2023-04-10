@@ -14,10 +14,35 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BlogCategoryForm from './BlogCategoryForm';
+import AddBlogForm from './AddBlogForm';
 
 const drawerWidth = 240;
 
+function handleChange(text) {
+    // if (text === 'Dashboard') {
+
+    // }
+    // else if (text === 'Category') {
+    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    //         <Toolbar />
+
+    //         <BlogCategoryForm />
+    //     </Box>
+    // }
+    // else if (text === 'Blog') {
+    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    //         <Toolbar />
+
+    //         <AddBlogForm />
+    //     </Box>
+    // }
+}
+
 export default function LeftNavBar() {
+    const [Dashboard, UseDatsboard] = React.useState("");
+    const [Category, useCategory] = React.useState("");
+    const [Blog, useBlog] = React.useState("");
+
     return (
         <>
             <Box sx={{ display: 'flex' }}>
@@ -38,9 +63,9 @@ export default function LeftNavBar() {
                                 <ListItem key={text} disablePadding>
                                     <ListItemButton>
                                         <ListItemIcon>
-                                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                            {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                                         </ListItemIcon>
-                                        <ListItemText primary={text} />
+                                        <ListItemText primary={text} onClick={handleChange(text)} />
                                     </ListItemButton>
                                 </ListItem>
                             ))}
@@ -53,8 +78,10 @@ export default function LeftNavBar() {
                 </Drawer>
                 {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <Toolbar />
+
                     <BlogCategoryForm />
-                </Box> */}
+                    {/* <AddBlogForm /> */}
+                {/* </Box> */}
 
             </Box>
 

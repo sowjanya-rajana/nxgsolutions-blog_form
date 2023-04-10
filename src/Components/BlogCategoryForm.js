@@ -31,19 +31,13 @@ import {
     AddBlog,
 } from "../Redux/action";
 import { Form } from 'react-bootstrap';
+import { left } from '@popperjs/core';
+import { textAlign } from '@mui/system';
+import CategoryTable from './CategoryTable';
 
 
 
-const categories = [
-    "science",
-    "sports",
-    "business",
-    "politics",
-    "entertainment",
-    "technology",
-    "world",
-    "all"
-];
+
 
 const BlogCategoryForm = () => {
     const editor = useRef(null);
@@ -156,367 +150,126 @@ const BlogCategoryForm = () => {
 
 
             <form onSubmit={handleSubmit(toaddUser)}>
-                <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}>
-                    <Box sx={{ padding: 5 }}>
-                        <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                            Add Blog
-                        </Typography>
+                {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
+                <Box sx={{ padding: 5, }}>
+                    <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
+                        Blog
+                    </Typography>
 
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Title
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={10}>
-                                <TextField
-                                    // minLength={3}
-                                    // maxLength={50}
-                                    id="outlined-error-helper-text"
-                                    name="title"
-                                    size="small"
-                                    fullWidth
-                                    // required
-                                    label="Title*"
-                                    placeholder='Enter Your Name'
-                                    // type="text"
-                                    autoComplete="off"
-                                    variant="outlined"
+                    <Grid container spacing={3} textAlign={left} >
+                        <Grid item xs={12} sm={12}>
+                            <InputLabel
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: 'left',
+                                    fontWeight: 700,
 
-                                    {...register("title", {
-                                        required: true,
-                                        onChange: (e) => { setTitle(e.target.value); },
-                                        value: Title,
-                                        maxLength: 50,
-                                        minLength: 3,
-                                        // autoComplete: "off",
-                                        // variant: "outlined",
+                                }}
+                            >
+                                Category Name
+                            </InputLabel>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <TextField
+                                // minLength={3}
+                                // maxLength={50}
+                                id="outlined-error-helper-text"
+                                name="title"
+                                size="small"
+                                justifyContent='left'
+                                // fullWidth
+                                // required
+                                // label="Title*"
+                                placeholder='Category Name '
+                                // type="text"
+                                autoComplete="off"
+                                variant="outlined"
 
-
-                                    })}
-
-
-                                />
-                                {errors?.title?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
-                                {errors?.title?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                {errors?.title?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
-
-                            </Grid>
-
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Blog Category
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={10}>
-                                <FormControl fullWidth size="small">
-                                    <InputLabel id="demo-simple-select-label"  >Category Type* </InputLabel>
-
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        // value={category}
-                                        label="Category Type* "
-                                        placeholder='Select Category'
-                                        textAlign='left'
-
-                                        {...register("blogcategory", {
-                                            required: true,
-                                            onChange: handleChange,
-                                            // value: blogcategory,
-                                            //     // maxLength: 50,
-                                            //     // minLength: 3,
-                                            //     // autoComplete: "off",
-                                            //     // variant: "outlined",
-                                            // onChange: handleChange(),
-                                            //     onChange: (e) => { setCategory(e.target.value); },
-                                            value: category,
+                                {...register("title", {
+                                    required: true,
+                                    onChange: (e) => { setTitle(e.target.value); },
+                                    value: Title,
+                                    maxLength: 50,
+                                    minLength: 3,
+                                    // autoComplete: "off",
+                                    // variant: "outlined",
 
 
-                                        })}
-                                    // onChange={handleChange}
+                                })}
 
-                                    >
-                                        {categories.map((item) => (
-                                            <MenuItem value={item}>{item}</MenuItem>
-                                        ))}
 
-                                    </Select>
-                                    {/* <FormHelperText>Error</FormHelperText> */}
-                                    {console.log("errorcategory", errors)}
-                                    {category ? "" : errors?.blogcategory?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This is required field</p>)}
-                                    {/* {errors?.blogcategory?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                    {errors?.blogcategory?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)} */}
+                            />
+                            {errors?.title?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
+                            {errors?.title?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
+                            {errors?.title?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
 
-                                </FormControl>
-
-                            </Grid>
+                        </Grid>
 
 
 
 
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Img Upload
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <Button>
-                                    <UploadFileIcon />
-                                </Button>
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Image URL
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={10}>
-                                <TextField
-
-                                    id="imgUrl"
-                                    name="imgUrl"
-                                    label="Enter Image URL* "
-                                    fullWidth
-                                    size="small"
-                                    autoComplete="off"
-                                    variant="outlined"
-                                    {...register("imgUrl", {
-                                        required: true,
-                                        onChange: (e) => { setImage(e.target.value); },
-                                        value: image,
-                                        maxLength: 50,
-                                        minLength: 3,
-                                        // autoComplete: "off",
-                                        // variant: "outlined",
-
-
-                                    })}
-                                />
-                                {errors?.imgUrl?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}> >>This  is required field</p>)}
-                                {errors?.imgUrl?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                {errors?.imgUrl?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
 
 
 
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Discription
-                                </InputLabel>
-                            </Grid>
-                            {/* <Grid item xs={12} sm={10}>
-                                <FormControl fullWidth size="small">
-                                    <JoditEditor
-                                        // ref={editor} value={description} onChange={content => setDescription(content)}
-                                        {...register("description", {
-                                            required: true,
-
-
-                                            maxLength: 50,
-                                            minLength: 3,
-                                            // autoComplete: "off",
-                                            // variant: "outlined",
-
-
-                                        })}
-                                        ref={editor} value={description} onChange={content => setDescription(content)}
-                                    />
-
-                                    {console.log("description", description)}
-                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
-
-                                </FormControl>
+                        <Grid item xs={12} sm={2}>
+                            <InputLabel
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "left",
+                                    fontWeight: 700
+                                }}
+                            >
+                                Image
+                            </InputLabel>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Button variant="outlined" justifyContent='left'>
+                                Choose File
+                                {/* <UploadFileIcon /> */}
+                            </Button>
+                        </Grid>
 
 
 
-                            </Grid> */}
-                            <Grid item xs={12} sm={10}>
-                                <FormControl fullWidth size="small">
-                                    <ReactQuill theme="snow"
-
-                                        {...register("description", {
-                                            required: true,
-
-
-                                            maxLength: 50,
-                                            minLength: 3,
-                                            // autoComplete: "off",
-                                            // variant: "outlined",
-
-
-                                        })}
-                                        value={description} onChange={setDescription}
-                                    />
-
-                                    {console.log("description", description)}
-                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
-
-                                </FormControl>
 
 
 
-                            </Grid>
 
 
 
-                            <Grid item xs={12} sm={6} />
-                            <Grid item xs={12} sm={5} />
-                            {/* <Grid item xs={12} sm={4}>
-                            <Button variant="contained" sx={{ color: "#ff781f" }} onClick={() => toaddUser()}>
+
+
+
+
+
+
+
+
+
+
+
+
+                        {/* </Paper> */}
+
+
+                        <Grid item xs={12} sm={6} />
+                        <Grid item xs={12} sm={5} />
+                        <Grid item xs={12} sm={4}  >
+                            <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
                                 Save
                             </Button>
-                        </Grid> */}
-                            <Grid item xs={12} sm={5} />
-                        </Grid>
-                    </Box>
-                </Paper>
-
-                <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%", marginTop: "2%", marginBottom: "2%" }}>
-                    <Box sx={{ padding: 5 }}>
-                        <Typography variant="h6" textAlign="left" gutterBottom sx={{ paddingBottom: 5 }}>
-                            Blog SEO
-                        </Typography>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Blog Title
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={10}>
-                                <TextField
-
-                                    id="blogtitle"
-                                    name="blogtitle"
-                                    label="Enter Blog Title"
-                                    fullWidth
-                                    size="small"
-                                    autoComplete="off"
-                                    variant="outlined"
-                                    {...register("blogTitle", {
-                                        required: true,
-                                        onChange: (e) => { setBlogTitle(e.target.value); },
-                                        value: blogTitle,
-                                        maxLength: 50,
-                                        minLength: 3,
-                                        // autoComplete: "off",
-                                        // variant: "outlined",
-
-
-                                    })}
-
-
-
-                                />
-                                {errors?.blogTitle?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                {errors?.blogTitle?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                {errors?.blogTitle?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
-
-                            </Grid>
-                            <Grid item xs={12} sm={2}>
-                                <InputLabel
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        fontWeight: 700
-                                    }}
-                                >
-                                    Meta Discription
-                                </InputLabel>
-                            </Grid>
-                            <Grid item xs={12} sm={10}>
-                                <TextField
-                                    id="outlined-multiline-static"
-                                    label="Meta Description"
-                                    name="metadata"
-                                    multiline
-                                    fullWidth
-                                    rows={4}
-                                    {...register("metaData", {
-                                        required: true,
-                                        onChange: (e) => { setMetaData(e.target.value); },
-                                        value: metaData,
-                                        maxLength: 50,
-                                        minLength: 3,
-                                        // autoComplete: "off",
-                                        // variant: "outlined",
-
-
-                                    })}
-
-
-                                />
-                                {errors?.metaData?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                {errors?.metaData?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                {errors?.metaData?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
-
-                            </Grid>
 
                         </Grid>
-
-                    </Box>
-                </Paper>
-
-                <Grid item xs={12} sm={6} />
-                <Grid item xs={12} sm={5} />
-                <Grid item xs={12} sm={4}  >
-                    <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
-                        Save
-                    </Button>
-                    <Button variant="contained" color="warning" sx={{ color: "#e7e9f5" }} onClick={() => tocancledata()}>
-                        Cancle
-                    </Button>
-                    <Link to="/blogView ">
-                        <Button variant="contained" color="primary" sx={{ color: "#e7e9f5" }}  >
-                            List View
-                        </Button>
-                    </Link>
-                </Grid>
-                <Grid item xs={12} sm={5} />
+                        <Grid item xs={12} sm={5} />
+                        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                            < CategoryTable />
+                        </Box>
+                    </Grid>
+                </Box>
 
             </form>
 
-        </React.Fragment>
+        </React.Fragment >
     );
 }
 export default BlogCategoryForm;
