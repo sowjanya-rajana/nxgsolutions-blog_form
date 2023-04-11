@@ -30,6 +30,13 @@ const initialState = {
   geteditsingleloading: false,
   geteditsinglesuccess: {},
   error: "",
+
+  categoryLoading:false,
+  cate:{},
+
+  isImagesUploading: false,
+  images: {},
+
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -76,14 +83,36 @@ const usersReducer = (state = initialState, action) => {
         errorMessage: action.payload,
         getblogloading: false
       }
-    case types.UPLOAD_IMAGES_REQUEST:
-      return {
 
-      }
-    case types.UPLOAD_IMAGES_SUCCESS:
-      return {
 
+
+    case types.BLOG_IMAGES_REQUEST:
+      return {
+        ...state,
+        isImagesUploading: true,
       }
+    case types.BLOG_IMAGES_SUCCESS:
+      return {
+        ...state,
+        isImagesUploading: false,
+        images: action.payload
+      }
+
+
+
+      case types.CATEGORY_REQUEST:
+      return {
+        ...state,
+        categoryLoading: true,
+      }
+    case types.CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categoryLoading: false,
+        cate: action.payload
+      }
+
+
 
 
 

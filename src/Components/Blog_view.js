@@ -23,7 +23,7 @@ const Blog_view = () => {
         <h1>Welcome gourav</h1>{" "}
       </div>
       <div>
-        <Grid container columnSpacing={0}>
+        <Grid container columnSpacing={2} rowSpacing={2}>
           {users?.length > 0
             ? users.map((item, key) => {
                 return (

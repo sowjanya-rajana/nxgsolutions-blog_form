@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import * as React from "react";
+
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -16,6 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 // import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { useSelector, useDispatch } from "react-redux";
 //import { useNavigate, useParams } from "react-router-dom";
@@ -24,6 +26,8 @@ import {
     loadblogdata,
     AddBlog,
 } from "../Redux/action";
+import { CardMedia, Skeleton } from '@mui/material';
+import { Card } from 'react-bootstrap';
 
 
 
@@ -50,6 +54,8 @@ const CategoryTable = () => {
         blogdata,
         blog,
         errorMessage,
+        categoryLoading,
+        cate
 
     } = useSelector((state) => state.data);
     // const { errorMessage } = useSelector((state) => state.data);
@@ -62,7 +68,7 @@ const CategoryTable = () => {
 
     useEffect(() => {
         dispatch(loadblogdata());
-    }, [dispatch]);
+    }, [dispatch,cate,categoryLoading]);
 
     // const [Title, setTitle] = useState("");
     // const [blogcategory, setBlogcategory] = useState("");
@@ -85,7 +91,7 @@ const CategoryTable = () => {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-
+    console.log("pagge", page * rowsPerPage + rowsPerPage);
 
 
 
@@ -95,11 +101,14 @@ const CategoryTable = () => {
 
 
             <Paper elevation={3} sx={{ width: '98%', overflow: 'hidden', }}>
-                {getblogloading == true ? <div>
-                    <Typography variant="h6" gutterBottom color="black" sx={{ paddingBottom: 5 }}>
-                        Loading.....
-                    </Typography>
-                </div> :
+                {getblogloading == true ?
+                    // <div>
+                    //     <Typography variant="h6" gutterBottom color="black" sx={{ paddingBottom: 5 }}>
+                    //         Loading.....
+                    //     </Typography>
+                    // </div> 
+                    <Skeleton variant="rectangular" width="100%" height={400} />
+                    :
 
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -108,6 +117,8 @@ const CategoryTable = () => {
 
                                     <TableCell align="center">SNo</TableCell>
                                     <TableCell align="center">Category</TableCell>
+                                    <TableCell align="center">Image</TableCell>
+                                    <TableCell align="center">Status</TableCell>
                                     <TableCell align="center">Action</TableCell>
 
                                 </TableRow>
@@ -129,15 +140,30 @@ const CategoryTable = () => {
                                                 {/* <TableRow key={key}> */}
                                                 <TableCell align="center" component="th" scope="row"  >{key + 1} </TableCell>
 
-                                                <TableCell align="center">{row.blogcategory}</TableCell>
-                                                <TableCell align="right"> <Button> <DeleteIcon /> </Button></TableCell>
+                                                <TableCell align="center">{row.category}</TableCell>
+
+                                                <TableCell align="center">
+                                                    
+                                                <Grid item xs={4} sm={4} md={4} lg={4}>
+                    <Card sx={{ maxWidth: 200 }}>
+                      <CardMedia sx={{ height: 100 }} image ={row.blogcategoryImageURL} />
+                                                    </Card>
+                                                    </Grid>
+                                                    </TableCell>
+                                                <TableCell align="center">{row.status}</TableCell>
+                                                <TableCell align="center">
+                                                    <Button ><EditIcon /></Button>
+                                                    <Button> <DeleteIcon /></Button>
+                                                </TableCell>
 
                                             </TableRow>
 
 
 
                                         ))
+
                                 }
+
                             </TableBody>
                         </Table>
                     </TableContainer>
@@ -159,6 +185,7 @@ const CategoryTable = () => {
                     rowsPerPageOptions={[10, 25, 100]}
                     component="div"
                     count={blog.length}
+
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}

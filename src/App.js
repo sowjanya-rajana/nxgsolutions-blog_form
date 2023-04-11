@@ -11,6 +11,7 @@ import BlogView from "./Screens/BlogView";
 import AppBarAddBlog from "./Components/AppBarAddBlog";
 import LeftBar from "./Components/LeftBar";
 import DashboardScreen from "./Screens/DashboardScreen";
+import LinkScreen from "./Screens/LinkScreen";
 
 function App() {
 
@@ -26,8 +27,10 @@ function App() {
         </div>
         <BrowserRouter>
           <Routes>
-            <Route path="/dashboard" element={<DashboardScreen />} />
-
+            <Route path="/" element={<DashboardScreen />} />
+            <Route path="/:compo" element={<DashboardScreen />} />
+            {/* <Route path="/nxgecom/:compo" element={<DashboardScreen />} /> */}
+            {/* <Route path="/dashboard" element={<L />} /> */}
             <Route path="/welcome" element={<Welcome />} />
             <Route path="/" element={<Main />} />
             <Route path="/textEditor" element={<RichTextEditor />} />

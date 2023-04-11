@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import Stack from '@mui/material/Stack';
 import * as React from "react";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
@@ -29,8 +29,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {
     blogloading,
     AddBlog,
+    blogImages,
 } from "../Redux/action";
 import { Form } from 'react-bootstrap';
+import { Skeleton } from '@mui/material';
 
 
 
@@ -148,6 +150,30 @@ const AddBlogForm = () => {
     };
 
 
+
+    const [blogImageURL, setblogImage] = useState();
+    console.log("imageto",blogImageURL)
+  
+    const handleblogImage = (e) => {
+      const originalimage = e.target.files[0];
+      setblogImage(URL.createObjectURL(originalimage));
+    };
+  
+    const uploadImg = (e) => {
+      e.preventDefault();
+      dispatch(
+        blogImages({
+       file:blogImageURL
+         } )
+      );
+    };
+
+
+
+
+
+
+
     console.log("watch", watch('blogcategory', 'b'))
     return (
         <React.Fragment>
@@ -158,7 +184,7 @@ const AddBlogForm = () => {
             <form onSubmit={handleSubmit(toaddUser)}>
                 <Paper elevation={3} sx={{ marginRight: "30%" }}>
                     <Box sx={{ padding: 5 }}>
-                        <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
+                        <Typography variant="h6" textAlign={'left'} gutterBottom sx={{ paddingBottom: 5 }}>
                             Add Blog
                         </Typography>
 
@@ -167,7 +193,7 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -213,7 +239,7 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -271,25 +297,33 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
-                                    Img Upload
+                                    Image Upload
                                 </InputLabel>
                             </Grid>
                             <Grid item xs={12} sm={12}>
-                                <Button variant="outlined" justifyContent='center'>
-                                    Choose File
-                                    {/* <UploadFileIcon /> */}
-                                </Button>
+                            <Grid item xs={12} sm={12}>    
+                            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleblogImage(e)}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  fontWeight: 700,
+                }}
+              />
+            </Grid>
                             </Grid>
                             <Grid item xs={12} sm={2}>
                                 <InputLabel
                                     sx={{
 
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
@@ -329,44 +363,17 @@ const AddBlogForm = () => {
                                 <InputLabel
                                     sx={{
                                         display: "flex",
-                                        justifyContent: "center",
+                                        justifyContent: "left",
                                         fontWeight: 700
                                     }}
                                 >
                                     Discription
                                 </InputLabel>
                             </Grid>
-                            {/* <Grid item xs={12} sm={10}>
-                                <FormControl fullWidth size="small">
-                                    <JoditEditor
-                                        // ref={editor} value={description} onChange={content => setDescription(content)}
-                                        {...register("description", {
-                                            required: true,
 
-
-                                            maxLength: 50,
-                                            minLength: 3,
-                                            // autoComplete: "off",
-                                            // variant: "outlined",
-
-
-                                        })}
-                                        ref={editor} value={description} onChange={content => setDescription(content)}
-                                    />
-
-                                    {console.log("description", description)}
-                                    {description ? "" : errors?.description?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This  is required field</p>)}
-                                    {errors?.description?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                    {errors?.description?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too short</p>)}
-
-                                </FormControl>
-
-
-
-                            </Grid> */}
                             <Grid item xs={12} sm={10}>
                                 <FormControl fullWidth size="small">
-                                    <ReactQuill theme="snow"
+                                    <ReactQuill theme="snow" style={{ height: 300 }}
 
                                         {...register("description", {
                                             required: true,
@@ -500,19 +507,27 @@ const AddBlogForm = () => {
 
                 <Grid item xs={12} sm={6} />
                 <Grid item xs={12} sm={5} />
-                <Grid item xs={12} sm={4}  >
-                    <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
-                        Save
-                    </Button>
-                    <Button variant="contained" color="warning" sx={{ color: "#e7e9f5" }} onClick={() => tocancledata()}>
-                        Cancle
-                    </Button>
-                    <Link to="/blogView ">
-                        <Button variant="contained" color="primary" sx={{ color: "#e7e9f5" }}  >
-                            List View
-                        </Button>
-                    </Link>
-                </Grid>
+
+
+
+                <Box display="flex" justifyContent="center">
+
+                    <Grid item xs={12} sm={4}   >
+                        <Stack direction="row" spacing={2}>
+                            <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }}    >
+                                Save
+                            </Button>
+                            <Button variant="contained" color="warning" sx={{ color: "#e7e9f5" }} onClick={() => tocancledata()}>
+                                Cancle
+                            </Button>
+                            <Link to="/blogView ">
+                                <Button variant="contained" color="primary" sx={{ color: "#e7e9f5" }}  >
+                                    List View
+                                </Button>
+                            </Link>
+                        </Stack>
+                    </Grid>
+                </Box>
                 <Grid item xs={12} sm={5} />
 
             </form>

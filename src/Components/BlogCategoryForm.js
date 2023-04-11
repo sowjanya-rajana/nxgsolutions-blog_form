@@ -14,11 +14,17 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+
 import Select from "@mui/material/Select";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import Button from "@mui/material/Button";
 import FormHelperText from '@mui/material/FormHelperText';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 
 
 
@@ -29,6 +35,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
     blogloading,
     AddBlog,
+    blogcategoryImages,
+    blogcategory,
 } from "../Redux/action";
 import { Form } from 'react-bootstrap';
 import { left } from '@popperjs/core';
@@ -59,6 +67,7 @@ const BlogCategoryForm = () => {
 
         addStatus,
         blogloading,
+        
 
     } = useSelector((state) => state.data);
     // const { error } = useSelector((state) => state.data.errorMessage);
@@ -82,56 +91,38 @@ const BlogCategoryForm = () => {
         // }
     }, [dispatch, updateID, addStatus]);
 
-    const [Title, setTitle] = useState("");
-    // const [blogcategory, setBlogcategory] = useState("");
-    const [description, setDescription] = useState('');
-    const [image, setImage] = useState("");
-    //const [error, seterror] = useState("");
-    // const [value, setValue] = useState('');
+    
+     
     const [category, setCategory] = useState('');
-    const [metaData, setMetaData] = useState("");
-    const [blogTitle, setBlogTitle] = useState("");
+    
+    const [status, setStatus] = useState('Active');
 
-    function toaddUser() {
-        try {
-            let data = { Title, category, description, image, metaData, blogTitle };
-            // let updatedata = { name, lastName, email, address, updateID };
+    // function toaddUser() {
+    //     try {
+    //         let data = { Title, category, description, image, metaData, blogTitle };
+    //         // let updatedata = { name, lastName, email, address, updateID };
 
-            // if (!name || !lastName || !email || !address) {
-            //     seterror("please input all the input field");
-            // } else {
-
-
-            dispatch(AddBlog(data));
-            console.log("blogdata", data);
-            console.log("error", errors);
-            // seterror("");
-            // setname("");
-            // setlastName("");
-            // setEmail("");
-            // setaddress("");
+    //         // if (!name || !lastName || !email || !address) {
+    //         //     seterror("please input all the input field");
+    //         // } else {
 
 
-            // }
-        } catch (e) {
-            console.log("txed", e);
-        }
-
-    }
-
-    function tocancledata() {
-        setTitle("");
-        //setBlogcategory("");
-        setDescription("");
-        setImage("");
-
-        setValue("");
-        setCategory("");
-        setMetaData("");
-        setBlogTitle("");
+    //         dispatch(AddBlog(data));
+    //         console.log("blogdata", data);
+    //         console.log("error", errors);
+    //         // seterror("");
+    //         // setname("");
+    //         // setlastName("");
+    //         // setEmail("");
+    //         // setaddress("");
 
 
-    }
+    //         // }
+    //     } catch (e) {
+    //         console.log("txed", e);
+    //     }
+
+    // }
 
 
 
@@ -140,136 +131,193 @@ const BlogCategoryForm = () => {
         setCategory(event.target.value);
 
     };
+    const handleStatus = (event) => {
+        setStatus(event.target.value);
+    }
 
 
     console.log("watch", watch('blogcategory', 'b'))
+
+
+  const [blogcategoryImageURL, setblogImage] = useState();
+  console.log("blogcategoryImageURL", blogcategoryImageURL);
+
+  const handleblogImage = (e) => {
+    const categoryimage = e.target.files[0];
+    setblogImage(URL.createObjectURL(categoryimage));
+  };
+
+//   const uploadcategoryImg = (e) => {
+//     e.preventDefault();
+    
+//     dispatch(
+//       blogcategory({
+//         file: blogcategoryImageURL,
+//       })
+//     );
+//   };
+
+const   toaddCategory=(e)=>{
+    try{
+        let data = { category,blogcategoryImageURL ,status};
+        // e.preventDefault();
+          
+        dispatch(
+          blogcategory(data) );
+
+          setValue("category","");
+          setValue("blogcategoryImageURL","");
+          setValue("status","");
+       
+        console.warn("mainpage",data);
+    }catch(e){
+        console.warn("category error",e);
+    }
+
+  
+};
+
     return (
         <React.Fragment>
+            
+
+            <form onSubmit={handleSubmit(toaddCategory)}>
+                <Paper elevation={3} sx={{ marginRight: "30%" }}>
+                    {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
+                    <Box sx={{ padding: 5, }}>
+                        <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
+                            Blog
+                        </Typography>
+
+                        <Grid container spacing={3} textAlign={left} >
+                            <Grid item xs={12} sm={12}>
+                                <InputLabel
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: 'left',
+                                        fontWeight: 700,
+
+                                    }}
+                                >
+                                    Category Name
+                                </InputLabel>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <TextField
+                                    // minLength={3}
+                                    // maxLength={50}
+                                    color='primary'
+                                    id="outlined-error-helper-text"
+                                    name="category"
+                                    size="small"
+                                    justifyContent='left'
+                                    // fullWidth
+                                    // required
+                                    // label="Title*"
+                                    placeholder='Category Name '
+                                    // type="text"
+                                    autoComplete="off"
+                                    variant="outlined"
+
+                                    {...register("category", {
+                                        required: true,
+                                        onChange: (e) => { setCategory(e.target.value); },
+                                        value: category,
+                                        maxLength: 50,
+                                        minLength: 3,
+                                        // autoComplete: "off",
+                                        // variant: "outlined",
+
+
+                                    })}
+
+
+                                />
+                                {errors?.category?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
+                                {errors?.category?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
+                                {errors?.category?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
+
+                            </Grid>
+
+                            <Grid item xs={12} sm={2}>
+                                <InputLabel
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "left",
+                                        fontWeight: 700
+                                    }}
+                                >
+                                    Image
+                                </InputLabel>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+
+
+
+  <Grid item xs={12} sm={12}>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleblogImage(e)}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            fontWeight: 700,
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={12}>
+              {/* <Button onClick={(e) => uploadcategoryImg(e)}>
+                Upload
+              </Button> */}
+                            </Grid>
+                           
+                               
 
 
 
 
-            <form onSubmit={handleSubmit(toaddUser)}>
-                {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
-                <Box sx={{ padding: 5, }}>
-                    <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
-                        Blog
-                    </Typography>
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                                <FormControl>
+                                    <FormLabel>Status</FormLabel>
 
-                    <Grid container spacing={3} textAlign={left} >
-                        <Grid item xs={12} sm={12}>
-                            <InputLabel
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: 'left',
-                                    fontWeight: 700,
+                                    <RadioGroup
+                                        aria-labelledby="demo-controlled-radio-buttons-group"
+                                        name="radio-buttons-group"
+                                        value={status}
+                                        onChange={handleStatus}
+                                    >
+                                        <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                                        <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
+                                    </RadioGroup>
+                                </FormControl>
+                            </Grid>
 
-                                }}
-                            >
-                                Category Name
-                            </InputLabel>
+                            {/* </Paper> */}
+
+                            <Grid item xs={12} sm={6} />
+                            <Grid item xs={12} sm={5} />
+                            <Grid item xs={12} sm={4}  >
+                                <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px" 
+                                >
+                                    Save
+                                </Button>
+
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <TextField
-                                // minLength={3}
-                                // maxLength={50}
-                                id="outlined-error-helper-text"
-                                name="title"
-                                size="small"
-                                justifyContent='left'
-                                // fullWidth
-                                // required
-                                // label="Title*"
-                                placeholder='Category Name '
-                                // type="text"
-                                autoComplete="off"
-                                variant="outlined"
+                    </Box>
+                    <Grid item xs={12} sm={5} />
+                    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                        < CategoryTable />
+                    </Box>
 
-                                {...register("title", {
-                                    required: true,
-                                    onChange: (e) => { setTitle(e.target.value); },
-                                    value: Title,
-                                    maxLength: 50,
-                                    minLength: 3,
-                                    // autoComplete: "off",
-                                    // variant: "outlined",
-
-
-                                })}
-
-
-                            />
-                            {errors?.title?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
-                            {errors?.title?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                            {errors?.title?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
-
-                        </Grid>
-
-
-
-
-
-
-
-                        <Grid item xs={12} sm={2}>
-                            <InputLabel
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "left",
-                                    fontWeight: 700
-                                }}
-                            >
-                                Image
-                            </InputLabel>
-                        </Grid>
-                        <Grid item xs={12} sm={12}>
-                            <Button variant="outlined" justifyContent='left'>
-                                Choose File
-                                {/* <UploadFileIcon /> */}
-                            </Button>
-                        </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        {/* </Paper> */}
-
-
-                        <Grid item xs={12} sm={6} />
-                        <Grid item xs={12} sm={5} />
-                        <Grid item xs={12} sm={4}  >
-                            <Button type="submit" variant="contained" color="primary" sx={{ color: "#e7e9f5" }} marginRight="10px" marginLeft="10px"  >
-                                Save
-                            </Button>
-
-                        </Grid>
-                        <Grid item xs={12} sm={5} />
-                        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                            < CategoryTable />
-                        </Box>
-                    </Grid>
-                </Box>
-
+                </Paper>
             </form>
 
         </React.Fragment >
     );
 }
 export default BlogCategoryForm;
+
+                           

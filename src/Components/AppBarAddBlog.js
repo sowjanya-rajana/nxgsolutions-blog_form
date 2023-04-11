@@ -12,18 +12,40 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import LeftNavBar from './LeftNavBar';
 
 
 
 
-function AppBarAddBlog() {
+function AppBarAddBlog(props) {
+    // const { window } = props;
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+        props.func(mobileOpen);
+    };
 
     return (
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
+                <Toolbar  >
                     {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+                    <IconButton
+                        size="large"
+                        aria-label="open draawer"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, }}
+                        // onClick={handleOpenNavMenu}
+                        color="inherit"
+                    >
+                        <MenuIcon />
+                        {/* {mobileOpen ? <LeftNavBar /> : ""} */}
+                    </IconButton>
+
                     <Box sx={{ flexGrow: 0 }}>
 
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -33,13 +55,13 @@ function AppBarAddBlog() {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
+                        // component="a"
+                        // href="/"
                         sx={{
                             mr: 10,
                             marginLeft: 10,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            display: { xs: 'flex', md: 'flex' },
+                            // fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
@@ -47,40 +69,44 @@ function AppBarAddBlog() {
                             flexGrow: 1,
                         }}
                     >
-                        Store Name
+                        NXG ecom
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            // onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                // mr: 10,
-                                // marginLeft: 10,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Back to manage
-                            Store
-                        </Typography>
-                    </Box>
+                    {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}> */}
+                    {/* <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        // onClick={handleOpenNavMenu}
+                        color="inherit"
+                    >
+                        <MenuIcon />
+                    </IconButton> */}
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="/"
+                        sx={{
+                            mr: 10,
+                            marginLeft: 5,
+                            display: { xs: 'none', md: 'flex' },
+                            // fontFamily: 'monospace',
+                            fontWeight: 500,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            // flexGrow: 1,
+                        }}
+                    >
+                        Back to manage
+                        Store
+                    </Typography>
+
+
+
+                    {/* </Box> */}
                     {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
 
 

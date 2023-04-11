@@ -36,8 +36,47 @@
   overflow: auto;
   text-align: center;
 }
+.mshover{
+background-color :#ffff;
+ 
+}
+.mshover:hover{
+  color: #ffff;
+  background-color: #0d6efd;
+  
+}
+.ql-editor{
+  min-height:200px;
+}
+/* List:hover{
+  background-color: #0d6efd;
+} */
+ .menu-icon{
+  display: none;
+ }
 
-@keyframes App-logo-spin {
+
+ @media screen and (max-width:864px){
+.log{
+  display: flex;
+  position:absolute;
+  top:15px;
+  right:20px;
+}
+.nav-link{
+  display: none;
+}
+.nav-mobile{
+  position: absolute;
+  display:block;
+  list-style: none;
+  left: 0;
+  transition: all 0.5s ease-out;
+  width: 100%;
+}
+ }
+
+@keyframes  App-logo-spin {
   from {
     transform: rotate(0deg);
   }
