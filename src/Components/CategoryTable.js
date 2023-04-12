@@ -25,6 +25,7 @@ import {
 
     loadblogdata,
     AddBlog,
+    deleteCategory,
 } from "../Redux/action";
 import { CardMedia, Skeleton } from '@mui/material';
 import { Card } from 'react-bootstrap';
@@ -32,7 +33,7 @@ import { Card } from 'react-bootstrap';
 
 
 
-const CategoryTable = () => {
+const CategoryTable = (props) => {
 
 
 
@@ -41,7 +42,7 @@ const CategoryTable = () => {
 
     //let paramData = useParams("id");
     const updateID = 0;
-
+console.warn("propsdata category",props);
     // const location = useLocation();
     // const searchparam = new URLSearchParams(location.search);
     // let type = searchparam.get("type");
@@ -55,7 +56,9 @@ const CategoryTable = () => {
         blog,
         errorMessage,
         categoryLoading,
-        cate
+        cate,
+        deletecategory,
+        deleteloading
 
     } = useSelector((state) => state.data);
     // const { errorMessage } = useSelector((state) => state.data);
@@ -68,7 +71,7 @@ const CategoryTable = () => {
 
     useEffect(() => {
         dispatch(loadblogdata());
-    }, [dispatch,cate,categoryLoading]);
+    }, [dispatch,cate,categoryLoading,deletecategory,deleteloading]);
 
     // const [Title, setTitle] = useState("");
     // const [blogcategory, setBlogcategory] = useState("");
@@ -82,6 +85,7 @@ const CategoryTable = () => {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -92,6 +96,18 @@ const CategoryTable = () => {
         setPage(0);
     };
     console.log("pagge", page * rowsPerPage + rowsPerPage);
+
+    function todeleteCategory(id) {
+        if (window.confirm("Delete the user?")) {
+            dispatch(deleteCategory(id));
+
+        }
+        
+      }
+
+      const edit_category=(id)=>{
+        // let d={props}
+      }
 
 
 
@@ -153,7 +169,10 @@ const CategoryTable = () => {
                                                 <TableCell align="center">{row.status}</TableCell>
                                                 <TableCell align="center">
                                                     <Button ><EditIcon /></Button>
-                                                    <Button> <DeleteIcon /></Button>
+                                                    <Button
+                            type="submit"
+                            onClick={() => todeleteCategory(row.id)}
+                          > <DeleteIcon /></Button>
                                                 </TableCell>
 
                                             </TableRow>

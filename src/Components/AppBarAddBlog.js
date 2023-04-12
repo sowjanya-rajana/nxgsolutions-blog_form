@@ -23,7 +23,7 @@ function AppBarAddBlog(props) {
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-        props.func(mobileOpen);
+        props.func(!mobileOpen);
     };
 
     return (
@@ -93,10 +93,11 @@ function AppBarAddBlog(props) {
                             marginLeft: 5,
                             display: { xs: 'none', md: 'flex' },
                             // fontFamily: 'monospace',
-                            fontWeight: 500,
+                            fontWeight: 300,
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            fontSize:12,
                             // flexGrow: 1,
                         }}
                     >

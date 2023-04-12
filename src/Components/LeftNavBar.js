@@ -103,9 +103,9 @@ function LeftNavBar(props) {
 
                 <List  >
                     {data.map((text, index) => (
-                        <ListItem key={text} disablePadding className='mshover'  >
+                        <ListItem key={text} disablePadding className='mshover' component={Link} to={text.url} >
                             {/* <Link to={text.url} > */}
-                            <ListItemButton component={Link} to={text.url}>
+                            <ListItemButton >
                                 <ListItemIcon>
                                     {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                                 </ListItemIcon>

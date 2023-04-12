@@ -3,6 +3,7 @@ import * as types from "./actionType";
 const initialState = {
   users: [],
   blog: [],
+
   user: {},
   loading: true,
   errorMessage: "",
@@ -36,6 +37,13 @@ const initialState = {
 
   isImagesUploading: false,
   images: {},
+
+  deletecategory:{},
+  deleteloading: false,
+
+  editcategory:{},
+  editcategoryloading:false,
+
 
 };
 
@@ -129,7 +137,34 @@ const usersReducer = (state = initialState, action) => {
           loading: false,
         };
 
-
+        case types.DELETE_CATEGORY_REQUEST:
+          return {
+            ...state,
+            deletecategory: action.payload ,
+            deleteloading: true,
+          };
+        case types.DELETE_CATEGORY_SUCCESS:
+          console.warn("deletecategory",action.payload)
+          return {
+            ...state,
+           
+            // deleteusers: state.users.filter(x=>x.id !== action.payload),
+            deletecategory:  action.payload,
+            deleteloading: false,
+          };
+          case types.EDIT_CATEGORY_REQUEST:
+            return {
+              ...state,
+      
+              editcategoryloading: true,
+            };
+          case types.EDIT_CATEGORY_SUCCESS:
+            return {
+              ...state,
+              editcategory:state.users.map((x)=>x.id === action.payload.id ? action.payload: x),
+              editstatus: action.status,
+              editcategoryloading: false,
+            };
 
     default:
       return state;

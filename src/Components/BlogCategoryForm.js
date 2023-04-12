@@ -97,35 +97,6 @@ const BlogCategoryForm = () => {
     
     const [status, setStatus] = useState('Active');
 
-    // function toaddUser() {
-    //     try {
-    //         let data = { Title, category, description, image, metaData, blogTitle };
-    //         // let updatedata = { name, lastName, email, address, updateID };
-
-    //         // if (!name || !lastName || !email || !address) {
-    //         //     seterror("please input all the input field");
-    //         // } else {
-
-
-    //         dispatch(AddBlog(data));
-    //         console.log("blogdata", data);
-    //         console.log("error", errors);
-    //         // seterror("");
-    //         // setname("");
-    //         // setlastName("");
-    //         // setEmail("");
-    //         // setaddress("");
-
-
-    //         // }
-    //     } catch (e) {
-    //         console.log("txed", e);
-    //     }
-
-    // }
-
-
-
     const handleChange = (event) => {
         console.log("onchange", event);
         setCategory(event.target.value);
@@ -180,9 +151,11 @@ const   toaddCategory=(e)=>{
     return (
         <React.Fragment>
             
-
+            <Grid container >
+            <Grid item xs={12} lg={12} md={12} sm={12}>
+            <Paper elevation={3} >
             <form onSubmit={handleSubmit(toaddCategory)}>
-                <Paper elevation={3} sx={{ marginRight: "30%" }}>
+                
                     {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
                     <Box sx={{ padding: 5, }}>
                         <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
@@ -307,14 +280,16 @@ const   toaddCategory=(e)=>{
                             </Grid>
                         </Grid>
                     </Box>
+                    </form>
                     <Grid item xs={12} sm={5} />
                     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                        < CategoryTable />
+                        < CategoryTable  categorydata={{name:{category},image:{blogcategoryImageURL},status:{status}}}/>
                     </Box>
 
                 </Paper>
-            </form>
-
+           
+</Grid>
+</Grid>
         </React.Fragment >
     );
 }
