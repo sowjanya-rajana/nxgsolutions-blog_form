@@ -23,7 +23,7 @@ function AppBarAddBlog(props) {
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
-        props.func(mobileOpen);
+        props.func(!mobileOpen);
     };
 
     return (

@@ -252,24 +252,6 @@ const BlogCategoryForm = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             {/* </Paper> */}
 
 
@@ -281,12 +263,13 @@ const BlogCategoryForm = () => {
                                 </Button>
 
                             </Grid>
-                            <Grid item xs={12} sm={5} />
-                            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                                < CategoryTable />
-                            </Box>
                         </Grid>
                     </Box>
+                    <Grid item xs={12} sm={5} />
+                    <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                        < CategoryTable />
+                    </Box>
+
                 </Paper>
             </form>
 
