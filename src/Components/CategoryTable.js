@@ -42,7 +42,7 @@ const CategoryTable = (props) => {
 
     //let paramData = useParams("id");
     const updateID = 0;
-console.warn("propsdata category",props);
+    console.warn("propsdata category", props);
     // const location = useLocation();
     // const searchparam = new URLSearchParams(location.search);
     // let type = searchparam.get("type");
@@ -71,7 +71,7 @@ console.warn("propsdata category",props);
 
     useEffect(() => {
         dispatch(loadblogdata());
-    }, [dispatch,cate,categoryLoading,deletecategory,deleteloading]);
+    }, [dispatch, cate, categoryLoading, deletecategory, deleteloading]);
 
     // const [Title, setTitle] = useState("");
     // const [blogcategory, setBlogcategory] = useState("");
@@ -85,7 +85,7 @@ console.warn("propsdata category",props);
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
-    
+
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -102,12 +102,12 @@ console.warn("propsdata category",props);
             dispatch(deleteCategory(id));
 
         }
-        
-      }
 
-      const edit_category=(id)=>{
+    }
+
+    const edit_category = (id) => {
         // let d={props}
-      }
+    }
 
 
 
@@ -159,20 +159,20 @@ console.warn("propsdata category",props);
                                                 <TableCell align="center">{row.category}</TableCell>
 
                                                 <TableCell align="center">
-                                                    
-                                                <Grid item xs={4} sm={4} md={4} lg={4}>
-                    <Card sx={{ maxWidth: 200 }}>
-                      <CardMedia sx={{ height: 100 }} image ={row.blogcategoryImageURL} />
-                                                    </Card>
+
+                                                    <Grid item xs={4} sm={4} md={4} lg={4}>
+                                                        <Card sx={{ maxWidth: 200 }}>
+                                                            <CardMedia sx={{ height: 100 }} image={row.blogcategoryImageURL} />
+                                                        </Card>
                                                     </Grid>
-                                                    </TableCell>
+                                                </TableCell>
                                                 <TableCell align="center">{row.status}</TableCell>
                                                 <TableCell align="center">
                                                     <Button ><EditIcon /></Button>
                                                     <Button
-                            type="submit"
-                            onClick={() => todeleteCategory(row.id)}
-                          > <DeleteIcon /></Button>
+                                                        type="submit"
+                                                        onClick={() => todeleteCategory(row.id)}
+                                                    > <DeleteIcon /></Button>
                                                 </TableCell>
 
                                             </TableRow>

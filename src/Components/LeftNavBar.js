@@ -53,8 +53,11 @@ function LeftNavBar(props) {
 
     console.log("props", props);
 
-    const params = useParams();
-    const { compo } = params;
+    const { params } = useParams();
+    // const { compo } = params;
+
+    console.warn("params", params);
+
     const location = useLocation();
     const searchparams = new URLSearchParams(location.search);
     let type = searchparams.get("type");

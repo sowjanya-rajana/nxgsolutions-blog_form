@@ -46,6 +46,10 @@ color: black;
   background-color: #0d6efd;
   
 }
+.active{
+  color: #ffff;
+  background-color: #0d6efd;
+}
 .ql-editor{
   min-height:200px;
 }

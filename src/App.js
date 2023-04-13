@@ -43,6 +43,7 @@ function App() {
             <Route path="/blogView" element={<BlogView />} />
             <Route path="/CategoryTable" element={<CategoryTable />} />
             <Route path="/CategoryTable/:id" element={<CategoryTable />} />
+            <Route path="/*" element={<div>404 NOT FOUND</div>} />
           </Routes>
         </BrowserRouter>
         {/* setValue={setValue} */}

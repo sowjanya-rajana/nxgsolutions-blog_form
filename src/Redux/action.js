@@ -79,24 +79,24 @@ export const loadFile = () => async (dispatch) => {
 
 
 export const blogImages = (obj) => async (dispatch) => {
-  console.log("formData",obj)
-    dispatch({
-      type: types.BLOG_IMAGES_REQUEST,
-      payload: {},
-    });
+  console.log("formData", obj)
+  dispatch({
+    type: types.BLOG_IMAGES_REQUEST,
+    payload: {},
+  });
   try {
     const responseofImage = await axios.post(
       "http://localhost:3000/apidata",
       obj
     );
-    console.log("responseofImage",responseofImage)
+    console.log("responseofImage", responseofImage)
 
-    
-      dispatch({
-        type: types.BLOG_IMAGES_SUCCESS,
-        payload: responseofImage,
-      });
-    
+
+    dispatch({
+      type: types.BLOG_IMAGES_SUCCESS,
+      payload: responseofImage,
+    });
+
   } catch (error) {
     dispatch({
       type: types.BLOG_IMAGES_FAILURE,
@@ -108,24 +108,24 @@ export const blogImages = (obj) => async (dispatch) => {
 
 
 export const blogcategory = (obj) => async (dispatch) => {
-  console.log("formData",obj)
-    dispatch({
-      type: types.CATEGORY_REQUEST,
-      payload: {},
-    });
+  console.log("formData", obj)
+  dispatch({
+    type: types.CATEGORY_REQUEST,
+    payload: {},
+  });
   try {
     const responseofImage = await axios.post(
-    " https://64350b2c83a30bc9ad569355.mockapi.io/categories/categories" ,
+      " https://64350b2c83a30bc9ad569355.mockapi.io/categories/categories",
       obj
     );
-    console.log("responseofImage",responseofImage)
+    console.log("responseofImage", responseofImage)
 
-    
-      dispatch({
-        type: types.CATEGORY_SUCCESS,
-        payload: responseofImage,
-      });
-    
+
+    dispatch({
+      type: types.CATEGORY_SUCCESS,
+      payload: responseofImage,
+    });
+
   } catch (error) {
     dispatch({
       type: types.CATEGORY_FAILURE,
@@ -155,7 +155,7 @@ export const deleteCategory = (id) => async (dispatch) => {
 };
 
 
-export const editCategory = (data,id) => async (dispatch) => {
+export const editCategory = (data, id) => async (dispatch) => {
   dispatch({
     type: types.EDIT_CATEGORY_REQUEST,
     payload: {},
@@ -169,8 +169,8 @@ export const editCategory = (data,id) => async (dispatch) => {
   //   updateID:parseInt(obj.updateID)
   // }
   try {
-    axios.put(`https://64350b2c83a30bc9ad569355.mockapi.io/categories/categories/${id}`,data).then((response) => {
-         console.log("edit category",response)
+    axios.put(`https://64350b2c83a30bc9ad569355.mockapi.io/categories/categories/${id}`, data).then((response) => {
+      console.log("edit category", response)
       dispatch({
         type: types.EDIT_CATEGORY_SUCCESS,
         payload: response.data,
