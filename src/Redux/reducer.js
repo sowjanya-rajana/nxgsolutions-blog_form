@@ -24,7 +24,7 @@ const initialState = {
   blogstatus: "",
 
   getblogdata: [],
-  getblogloading: false,
+  getblogloading: true,
   getblogstatus: "",
 
   usersxyz: [],
@@ -32,17 +32,17 @@ const initialState = {
   geteditsinglesuccess: {},
   error: "",
 
-  categoryLoading:false,
-  cate:{},
+  categoryLoading: false,
+  cate: {},
 
   isImagesUploading: false,
   images: {},
 
-  deletecategory:{},
+  deletecategory: {},
   deleteloading: false,
 
-  editcategory:{},
-  editcategoryloading:false,
+  editcategory: {},
+  editcategoryloading: false,
 
 
 };
@@ -73,7 +73,7 @@ const usersReducer = (state = initialState, action) => {
     case types.GET_BLOG_DATA_REQUEST:
       return {
         ...state,
-        blog: action.payload,
+        // blog: action.payload,
         // getblogloading: false,
         getblogloading: true,
       };
@@ -108,7 +108,7 @@ const usersReducer = (state = initialState, action) => {
 
 
 
-      case types.CATEGORY_REQUEST:
+    case types.CATEGORY_REQUEST:
       return {
         ...state,
         categoryLoading: true,
@@ -124,47 +124,47 @@ const usersReducer = (state = initialState, action) => {
 
 
 
-      case types.GET_FILE_REQUEST:
-        return {
-          ...state,
-          users: action.payload,
-          loading: true,
-        };
-      case types.GET_FILE_SUCCESS:
-        return {
-          ...state,
-          users: action.payload,
-          loading: false,
-        };
+    case types.GET_FILE_REQUEST:
+      return {
+        ...state,
+        users: action.payload,
+        loading: true,
+      };
+    case types.GET_FILE_SUCCESS:
+      return {
+        ...state,
+        users: action.payload,
+        loading: false,
+      };
 
-        case types.DELETE_CATEGORY_REQUEST:
-          return {
-            ...state,
-            deletecategory: action.payload ,
-            deleteloading: true,
-          };
-        case types.DELETE_CATEGORY_SUCCESS:
-          console.warn("deletecategory",action.payload)
-          return {
-            ...state,
-           
-            // deleteusers: state.users.filter(x=>x.id !== action.payload),
-            deletecategory:  action.payload,
-            deleteloading: false,
-          };
-          case types.EDIT_CATEGORY_REQUEST:
-            return {
-              ...state,
-      
-              editcategoryloading: true,
-            };
-          case types.EDIT_CATEGORY_SUCCESS:
-            return {
-              ...state,
-              editcategory:state.users.map((x)=>x.id === action.payload.id ? action.payload: x),
-              editstatus: action.status,
-              editcategoryloading: false,
-            };
+    case types.DELETE_CATEGORY_REQUEST:
+      return {
+        ...state,
+        deletecategory: action.payload,
+        deleteloading: true,
+      };
+    case types.DELETE_CATEGORY_SUCCESS:
+      console.warn("deletecategory", action.payload)
+      return {
+        ...state,
+
+        // deleteusers: state.users.filter(x=>x.id !== action.payload),
+        deletecategory: action.payload,
+        deleteloading: false,
+      };
+    case types.EDIT_CATEGORY_REQUEST:
+      return {
+        ...state,
+
+        editcategoryloading: true,
+      };
+    case types.EDIT_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        editcategory: state.users.map((x) => x.id === action.payload.id ? action.payload : x),
+        editstatus: action.status,
+        editcategoryloading: false,
+      };
 
     default:
       return state;

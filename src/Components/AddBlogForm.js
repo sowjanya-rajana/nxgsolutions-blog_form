@@ -56,7 +56,7 @@ const AddBlogForm = () => {
   // const searchparam = new URLSearchParams(location.search);
   // let type = searchparam.get("type");
 
-  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, blogloading } = useSelector((state) => state.data);
+  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading } = useSelector((state) => state.data);
   // const { error } = useSelector((state) => state.data.errorMessage);
   // console.log("errorData", error)
 
@@ -64,7 +64,7 @@ const AddBlogForm = () => {
   // const { errorMessage } = useSelector((state) => state.data);
 
 
-  console.log(blog, "useselectorblog")
+  console.log(blog, "ffffffffff ffff")
 
   const {
     register,
@@ -77,6 +77,9 @@ const AddBlogForm = () => {
   useEffect(() => {
     //dispatch(loadUsers());
     dispatch(loadblogdata());
+    // if (getblogloading == false) {
+    //   console.log("bloggg", blog)
+    // }
     // if ("update") {
     //     dispatch(getSingleUser(updateID));
     //     if (geteditsingleloading == false) {
@@ -267,10 +270,10 @@ const AddBlogForm = () => {
                         })}
                       // onChange={handleChange}
                       >
-                        {categories ? categories.map((item, index) => (
-                          <MenuItem value={item}>{item}</MenuItem>
-                          console.log("blogdata", item)
-                        )) : ""}
+                        {blog?.map((item, index) => (
+                          <MenuItem value={item.category}>{item.category}</MenuItem>
+                          // console.log("blogdata", item)
+                        ))}
                       </Select>
                       {/* <FormHelperText>Error</FormHelperText> */}
                       {console.log("errorcategory", errors)}
@@ -295,7 +298,7 @@ const AddBlogForm = () => {
                         padding: 1,
                       }}
                     >
-                      Image Upload
+                      Blog Image
                     </InputLabel>
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={10}>
@@ -306,7 +309,7 @@ const AddBlogForm = () => {
                       onChange={(e) => handleblogImage(e)}
                       sx={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "left",
                         fontWeight: 700,
                       }}
                     />
