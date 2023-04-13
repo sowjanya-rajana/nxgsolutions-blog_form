@@ -33,7 +33,7 @@ export const loadblogdata = () => async (dispatch) => {
   dispatch({
     type: types.GET_BLOG_DATA_REQUEST,
 
-    payload: {},
+    // payload: {},
 
   });
   try {

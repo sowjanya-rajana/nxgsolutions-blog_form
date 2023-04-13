@@ -24,7 +24,7 @@ const initialState = {
   blogstatus: "",
 
   getblogdata: [],
-  getblogloading: false,
+  getblogloading: true,
   getblogstatus: "",
 
   usersxyz: [],
@@ -73,6 +73,7 @@ const usersReducer = (state = initialState, action) => {
     case types.GET_BLOG_DATA_REQUEST:
       return {
         ...state,
+        // blog: action.payload,
         // getblogloading: false,
         getblogloading: true,
       };

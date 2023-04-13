@@ -1,5 +1,5 @@
 import *  as React from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import Drawer from '@mui/material/Drawer';
@@ -13,6 +13,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import CategoryIcon from '@mui/icons-material/Category';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BlogCategoryForm from './BlogCategoryForm';
@@ -55,9 +58,13 @@ function LeftNavBar(props) {
 
     const { params } = useParams();
     // const { compo } = params;
+    // const path = window.location.pathname
+
 
 
     const location = useLocation();
+    const path = location.pathname;
+    console.warn("params", location.pathname);
     const searchparams = new URLSearchParams(location.search);
 
     console.warn("params", { params });
@@ -70,14 +77,6 @@ function LeftNavBar(props) {
     const [Category, useCategory] = React.useState("");
     const [Blog, useBlog] = React.useState("");
     const navigate = useNavigate();
-    // const [ismobile, setismobile] = React.useState(true);
-    // const [value, setValue] = React.useState({
-    //     "name": "Dashboard",
-    //     "url": "/dashboard"
-    // });
-    const [value, setValue] = React.useState({
-
-    });
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -94,15 +93,18 @@ function LeftNavBar(props) {
     const data = [
         {
             "name": "Dashboard",
-            "url": "/dashboard"
+            "url": "/dashboard",
+            "icon": <DashboardIcon />
         },
         {
             "name": "Category",
-            "url": "/category"
+            "url": "/category",
+            "icon": <CategoryIcon />
         },
         {
             "name": "Blog",
-            "url": "/blog"
+            "url": "/blog",
+            "icon": <AddCardIcon />
         }
 
     ]
@@ -113,14 +115,16 @@ function LeftNavBar(props) {
 
                 <List  >
                     {data.map((text, index) => (
-                        <ListItem key={text} disablePadding className='mshover' component={NavLink} to={text.url} >
+                        <ListItem key={text} disablePadding className={path === text.url ? "mshover active" : "mshover"} component={Link} to={text.url} >
                             {/* <Link to={text.url} > */}
-                            <ListItemButton >
+                            <ListItemButton   >
                                 <ListItemIcon>
-                                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+
+                                    {text.icon}
+
                                 </ListItemIcon>
 
-                                <ListItemText primary={text.name} onClick={() => (setMobileOpen(!mobileOpen), setValue(text))} />
+                                <ListItemText primary={text.name} onClick={() => (setMobileOpen(!mobileOpen), setIsActive(current => !current))} />
                             </ListItemButton>
                             {/* </Link> */}
                         </ListItem>
@@ -134,6 +138,10 @@ function LeftNavBar(props) {
         </div>
     );
     const container = window !== undefined ? () => window().document.body : undefined;
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <>
