@@ -124,7 +124,7 @@ function LeftNavBar(props) {
 
                                 </ListItemIcon>
 
-                                <ListItemText primary={text.name} onClick={() => (setMobileOpen(!mobileOpen), setIsActive(current => !current))} />
+                                <ListItemText primary={text.name} onClick={() => (setMobileOpen(!mobileOpen))} />
                             </ListItemButton>
                             {/* </Link> */}
                         </ListItem>
