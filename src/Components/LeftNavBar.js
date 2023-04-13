@@ -20,9 +20,30 @@ import AddBlogForm from './AddBlogForm';
 import { useParams, useLocation, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import AppBarAddBlog from './AppBarAddBlog';
+import Blog_view from './Blog_view';
 
 
 const drawerWidth = 240;
+
+function handleChange(text) {
+    // if (text === 'Dashboard') {
+
+    // }
+    // else if (text === 'Category') {
+    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    //         <Toolbar />
+
+    //         <BlogCategoryForm />
+    //     </Box>
+    // }
+    // else if (text === 'Blog') {
+    //     <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    //         <Toolbar />
+
+    //         <AddBlogForm />
+    //     </Box>
+    // }
+}
 
 
 
@@ -82,9 +103,9 @@ function LeftNavBar(props) {
 
                 <List  >
                     {data.map((text, index) => (
-                        <ListItem key={text} disablePadding className='mshover'  >
+                        <ListItem key={text} disablePadding className='mshover' component={Link} to={text.url} >
                             {/* <Link to={text.url} > */}
-                            <ListItemButton component={Link} to={text.url}>
+                            <ListItemButton >
                                 <ListItemIcon>
                                     {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                                 </ListItemIcon>
@@ -156,7 +177,7 @@ function LeftNavBar(props) {
                         {(() => {
                             switch (value.url) {
                                 case '/dashboard':
-                                    return < AddBlogForm />
+                                    return < Blog_view />
                                 case '/category':
                                     return <BlogCategoryForm />
                                 case '/blog':
