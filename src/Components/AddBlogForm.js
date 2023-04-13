@@ -22,7 +22,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import { useSelector, useDispatch } from "react-redux";
 //import { useNavigate, useParams } from "react-router-dom";
-import { blogloading, AddBlog, blogImages, deleteCategory, loadblogdata } from "../Redux/action";
+import { AddBlog, blogImages, deleteCategory, loadblogdata } from "../Redux/action";
 import { Form } from "react-bootstrap";
 import { Skeleton } from "@mui/material";
 
@@ -56,15 +56,15 @@ const AddBlogForm = () => {
   // const searchparam = new URLSearchParams(location.search);
   // let type = searchparam.get("type");
 
-  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, blogloading } = useSelector((state) => state.data);
+  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading } = useSelector((state) => state.data);
   // const { error } = useSelector((state) => state.data.errorMessage);
   // console.log("errorData", error)
 
 
-  // const { errorMessage } = useSelector((state) => state.data);
+  // const { errorM essage } = useSelector((state) => state.data);
 
 
-  console.log(blog, "useselectorblog")
+  console.log(getblogloading, "dddddddddd     ")
 
   const {
     register,
@@ -267,10 +267,11 @@ const AddBlogForm = () => {
                         })}
                       // onChange={handleChange}
                       >
-                        {categories ? categories.map((item, index) => (
-                          <MenuItem value={item}>{item}</MenuItem>
+                        {console.log("loading", getblogloading)}
+                        {getblogloading ? "Loading" : blog?.map((item, index) => (
+                          // <MenuItem value={item}>{item}</MenuItem>
                           console.log("blogdata", item)
-                        )) : ""}
+                        ))}
                       </Select>
                       {/* <FormHelperText>Error</FormHelperText> */}
                       {console.log("errorcategory", errors)}

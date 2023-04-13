@@ -17,7 +17,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BlogCategoryForm from './BlogCategoryForm';
 import AddBlogForm from './AddBlogForm';
-import { useParams, useLocation, useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useSearchParams, useNavigate, NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import AppBarAddBlog from './AppBarAddBlog';
 import Blog_view from './Blog_view';
@@ -56,10 +56,13 @@ function LeftNavBar(props) {
     const { params } = useParams();
     // const { compo } = params;
 
-    console.warn("params", params);
 
     const location = useLocation();
     const searchparams = new URLSearchParams(location.search);
+
+    console.warn("params", { params });
+    console.warn("searchparams", searchparams);
+
     let type = searchparams.get("type");
     // const [searchparams,setSearchParams]=useSearch
     console.log("params", searchparams.get("type"));
@@ -110,7 +113,7 @@ function LeftNavBar(props) {
 
                 <List  >
                     {data.map((text, index) => (
-                        <ListItem key={text} disablePadding className='mshover' component={Link} to={text.url} >
+                        <ListItem key={text} disablePadding className='mshover' component={NavLink} to={text.url} >
                             {/* <Link to={text.url} > */}
                             <ListItemButton >
                                 <ListItemIcon>

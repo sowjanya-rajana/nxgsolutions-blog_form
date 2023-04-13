@@ -33,6 +33,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<DashboardScreen />} />
+            <Route path="/:compo" element={<DashboardScreen />} />
             <Route path="/dashboard" element={<DashboardScreen />} />
             <Route path="/category" element={<CategoryScreen />} />
             <Route path="/blog" element={<BlogScreen />} />
