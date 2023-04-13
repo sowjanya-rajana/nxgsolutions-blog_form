@@ -163,7 +163,7 @@ const BlogCategoryForm = () => {
                                 </Typography>
 
                                 <Grid container spacing={3} textAlign={left} >
-                                    <Grid item xs={12} sm={12}>
+                                    <Grid item xs={12} sm={12} md={12} lg={2}>
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
@@ -175,7 +175,7 @@ const BlogCategoryForm = () => {
                                             Category Name
                                         </InputLabel>
                                     </Grid>
-                                    <Grid item xs={12} sm={12}>
+                                    <Grid item xs={12} sm={12} md={12} lg={10}>
                                         <TextField
                                             // minLength={3}
                                             // maxLength={50}
@@ -212,7 +212,7 @@ const BlogCategoryForm = () => {
 
                                     </Grid>
 
-                                    <Grid item xs={12} sm={2}>
+                                    <Grid item xs={12} sm={12} md={12} lg={2}>
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
@@ -223,23 +223,23 @@ const BlogCategoryForm = () => {
                                             Image
                                         </InputLabel>
                                     </Grid>
-                                    <Grid item xs={12} sm={12}>
+                                    <Grid item xs={12} sm={12} md={12} lg={10}>
 
 
 
-                                        <Grid item xs={12} sm={12}>
+                                        <Grid item xs={12} sm={12} md={12} lg={10}>
                                             <input
                                                 type="file"
                                                 accept="image/*"
                                                 onChange={(e) => handleblogImage(e)}
                                                 sx={{
                                                     display: "flex",
-                                                    justifyContent: "center",
+                                                    justifyContent: "left",
                                                     fontWeight: 700,
                                                 }}
                                             />
                                         </Grid>
-                                        <Grid item xs={12} sm={12}>
+                                        <Grid item xs={12} sm={12} md={12} lg={10}>
                                             {/* <Button onClick={(e) => uploadcategoryImg(e)}>
                 Upload
               </Button> */}
@@ -251,20 +251,27 @@ const BlogCategoryForm = () => {
 
 
                                     </Grid>
-                                    <Grid item xs={12} sm={12}>
-                                        <FormControl>
-                                            <FormLabel>Status</FormLabel>
 
-                                            <RadioGroup
-                                                aria-labelledby="demo-controlled-radio-buttons-group"
-                                                name="radio-buttons-group"
-                                                value={status}
-                                                onChange={handleStatus}
-                                            >
-                                                <FormControlLabel value="Active" control={<Radio />} label="Active" />
-                                                <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
-                                            </RadioGroup>
-                                        </FormControl>
+                                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        {/* <FormControl> */}
+                                        <Grid container>
+                                            <Grid item xs={12} sm={12} md={12} lg={2}>
+                                                <FormLabel  >Status</FormLabel>
+                                            </Grid>
+                                            <Grid item xs={12} sm={12} md={12} lg={10}>
+                                                <RadioGroup
+                                                    aria-labelledby="demo-controlled-radio-buttons-group"
+                                                    name="radio-buttons-group"
+                                                    value={status}
+                                                    onChange={handleStatus}
+                                                >
+                                                    <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                                                    <FormControlLabel value="Draft" control={<Radio />} label="Draft" />
+                                                </RadioGroup>
+                                            </Grid>
+                                        </Grid>
+                                        {/* </FormControl> */}
+
                                     </Grid>
 
                                     {/* </Paper> */}
