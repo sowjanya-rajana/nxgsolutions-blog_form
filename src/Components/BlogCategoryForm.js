@@ -226,7 +226,6 @@ const   toaddCategory=(e)=>{
                             <Grid item xs={12} sm={12}>
 
 
-
   <Grid item xs={12} sm={12}>
                         <input
                           type="file"
@@ -240,16 +239,10 @@ const   toaddCategory=(e)=>{
                         />
                       </Grid>
                       <Grid item xs={12} sm={12}>
-              {/* <Button onClick={(e) => uploadcategoryImg(e)}>
-                Upload
-              </Button> */}
+
                             </Grid>
                            
                                
-
-
-
-
                             </Grid>
                             <Grid item xs={12} sm={12}>
                                 <FormControl>

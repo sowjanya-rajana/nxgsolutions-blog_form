@@ -134,7 +134,6 @@ export const blogcategory = (obj) => async (dispatch) => {
   }
 };
 
-
 export const deleteCategory = (id) => async (dispatch) => {
   dispatch({
     type: types.DELETE_CATEGORY_REQUEST,
@@ -153,6 +152,8 @@ export const deleteCategory = (id) => async (dispatch) => {
   }
 
 };
+
+
 
 
 export const editCategory = (data,id) => async (dispatch) => {

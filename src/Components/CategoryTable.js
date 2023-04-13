@@ -35,18 +35,20 @@ import { Card } from 'react-bootstrap';
 
 const CategoryTable = (props) => {
 
+    let paramData = useParams("id");
+    const updateCategory = paramData.id;
+  
+    const location = useLocation();
+    const searchparam = new URLSearchParams(location.search);
+    let type = searchparam.get("type");
+
 
 
     let dispatch = useDispatch();
-    // const navigate = useNavigate();
 
-    //let paramData = useParams("id");
     const updateID = 0;
 console.warn("propsdata category",props);
-    // const location = useLocation();
-    // const searchparam = new URLSearchParams(location.search);
-    // let type = searchparam.get("type");
-
+  
     const {
 
         getblogdata,
@@ -104,6 +106,11 @@ console.warn("propsdata category",props);
         }
         
       }
+
+const get_single_category=(id)=>{
+    
+
+}
 
       const edit_category=(id)=>{
         // let d={props}
