@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import * as React from "react";
 
 import { useState } from "react";
@@ -108,7 +108,7 @@ console.warn("propsdata category",props);
       }
 
 const get_single_category=(id)=>{
-    
+
 
 }
 
@@ -140,8 +140,10 @@ const get_single_category=(id)=>{
 
                                     <TableCell align="center">SNo</TableCell>
                                     <TableCell align="center">Category</TableCell>
-                                    <TableCell align="center">Image</TableCell>
+                                    <TableCell align="center">SEO Tittle</TableCell>
+                                    <TableCell align="center">SEO Meta Description</TableCell>
                                     <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Image</TableCell>
                                     <TableCell align="center">Action</TableCell>
 
                                 </TableRow>
@@ -163,17 +165,19 @@ const get_single_category=(id)=>{
                                                 {/* <TableRow key={key}> */}
                                                 <TableCell align="center" component="th" scope="row"  >{key + 1} </TableCell>
 
-                                                <TableCell align="center">{row.category}</TableCell>
-
+                                                <TableCell align="center">{row.categoryName}</TableCell>
+                                                <TableCell align="center">{row.seoTitle}</TableCell>
+                                                <TableCell align="center">{row.seoMetaDesc}</TableCell>
+                                                <TableCell align="center">{row.Status}</TableCell>
                                                 <TableCell align="center">
                                                     
                                                 <Grid item xs={4} sm={4} md={4} lg={4}>
                     <Card sx={{ maxWidth: 200 }}>
-                      <CardMedia sx={{ height: 100 }} image ={row.blogcategoryImageURL} />
+                      <CardMedia sx={{ height: 50 }} image ={row.imgData} />
                                                     </Card>
                                                     </Grid>
                                                     </TableCell>
-                                                <TableCell align="center">{row.status}</TableCell>
+                                               
                                                 <TableCell align="center">
                                                     <Button ><EditIcon /></Button>
                                                     <Button

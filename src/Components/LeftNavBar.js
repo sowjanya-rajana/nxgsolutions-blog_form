@@ -17,7 +17,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import BlogCategoryForm from './BlogCategoryForm';
 import AddBlogForm from './AddBlogForm';
-import { useParams, useLocation, useSearchParams } from 'react-router-dom';
+import { useParams, useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import AppBarAddBlog from './AppBarAddBlog';
 import Blog_view from './Blog_view';
@@ -63,10 +63,14 @@ function LeftNavBar(props) {
     const [Dashboard, UseDatsboard] = React.useState("");
     const [Category, useCategory] = React.useState("");
     const [Blog, useBlog] = React.useState("");
+    const navigate = useNavigate();
     // const [ismobile, setismobile] = React.useState(true);
+    // const [value, setValue] = React.useState({
+    //     "name": "Dashboard",
+    //     "url": "/dashboard"
+    // });
     const [value, setValue] = React.useState({
-        "name": "Dashboard",
-        "url": "/dashboard"
+
     });
 
     const { window } = props;
@@ -171,7 +175,7 @@ function LeftNavBar(props) {
                         {drawer}
                     </Drawer>
                 </Box>
-                <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
+                {/* <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
                     <Toolbar />
                     <div>
                         {(() => {
@@ -194,7 +198,7 @@ function LeftNavBar(props) {
 
 
 
-                </Box>
+                </Box>*/}
 
             </Box>
 
