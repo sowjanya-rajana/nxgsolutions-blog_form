@@ -220,7 +220,7 @@ const BlogCategoryForm = () => {
                                                 fontWeight: 700
                                             }}
                                         >
-                                            Image
+                                            Category Image
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={12} lg={10}>

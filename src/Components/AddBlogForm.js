@@ -64,7 +64,7 @@ const AddBlogForm = () => {
   // const { errorM essage } = useSelector((state) => state.data);
 
 
-  console.log(blog, "ffffffffff ffff")
+  console.log(getblogloading, "ffffffffff ffff")
 
   const {
     register,
@@ -253,11 +253,12 @@ const AddBlogForm = () => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         // value={category}
+                        // onChange={handleChange}
                         // label="Category Type* "
                         placeholder="Select Category"
                         textAlign="left"
                         {...register("blogcategory", {
-                          required: true,
+                          // required: true,
                           onChange: handleChange,
                           // value: blogcategory,
                           //     // maxLength: 50,
@@ -270,10 +271,10 @@ const AddBlogForm = () => {
                         })}
                       // onChange={handleChange}
                       >
-                        {blog?.map((item, index) => (
+                        {/* {blog?.map((item, index) => (
                           <MenuItem value={item.category}>{item.category}</MenuItem>
                           // console.log("blogdata", item)
-                        ))}
+                        ))} */}
                       </Select>
                       {/* <FormHelperText>Error</FormHelperText> */}
                       {console.log("errorcategory", errors)}
@@ -552,6 +553,7 @@ const AddBlogForm = () => {
                 variant="contained"
                 color="primary"
                 sx={{ color: "#e7e9f5" }}
+                onClick={() => toaddUser()}
               >
                 Save
               </Button>
@@ -563,7 +565,7 @@ const AddBlogForm = () => {
               >
                 Cancle
               </Button>
-              <Link to="/blogView ">
+              <Link to="/blogListView ">
                 <Button
                   variant="contained"
                   color="primary"

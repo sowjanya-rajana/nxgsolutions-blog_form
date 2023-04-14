@@ -19,7 +19,7 @@ const initialState = {
   editaddtid: "",
   editloading: false,
 
-  blogdata: [],
+  blogdata: {},
   blogloading: false,
   blogstatus: "",
 
@@ -69,6 +69,21 @@ const usersReducer = (state = initialState, action) => {
         errorMessage: action.payload,
         //console.log("error-addblog", errorMessage),
       }
+    case types.GET_BLOG_REQUEST:
+      return {
+        ...state,
+        // blog: action.payload,
+        // getblogloading: false,
+        blogloading: true,
+      };
+    case types.GET_BLOG_SUCCESS:
+      console.log("blogdata", action.payload)
+      return {
+        //getblogloading: true,
+        ...state,
+        blogdata: action.payload,
+        blogloading: false
+      };
 
     case types.GET_BLOG_DATA_REQUEST:
       return {

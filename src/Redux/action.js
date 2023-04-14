@@ -28,6 +28,37 @@ export const AddBlog = (blogdata) => (dispatch) => {
 };
 
 
+export const getblogdata = () => async (dispatch) => {
+  console.log("checkkkkblogload",)
+  dispatch({
+    type: types.GET_BLOG_REQUEST,
+
+    // payload: {},
+
+  });
+  try {
+    axios.get("https://6422806b001cb9fc20282210.mockapi.io/blog").then((res) => {
+      console.log("blogdatarequest", res)
+      dispatch({
+        type: types.GET_BLOG_SUCCESS,
+        payload: res.data,
+      });
+    });
+  } catch (error) {
+    console.log("error-Loadblog", error.toJSON().message);
+    console.log("blogerror", error.message);
+    dispatch({
+      type: types.GET_BLOG_FAIL,
+      payload: error.message,
+
+
+    });
+  }
+
+};
+
+
+
 export const loadblogdata = () => async (dispatch) => {
   console.log("checkkkkblogload",)
   dispatch({
