@@ -20,7 +20,7 @@ const Blog_view = () => {
   return (
     <>
       <div className="login">
-        <h1>Welcome gourav</h1>{" "}
+        <h1>Welcome </h1>{" "}
       </div>
       <div>
         <Grid container columnSpacing={2} rowSpacing={2}>

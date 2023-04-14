@@ -60,9 +60,9 @@ const BlogListView = () => {
   // const { errorMessage } = useSelector((state) => state.data);
   console.log("errorData", errorMessage)
 
-  console.log(blogdata[0], "useselectorblog")
+  console.log(blogdata, "useselectorblog")
 
-  const blg = blogdata[0]
+  // const blg = blogdata[0]
 
 
   useEffect(() => {

@@ -27,6 +27,7 @@ import { Form } from "react-bootstrap";
 import { Skeleton } from "@mui/material";
 
 
+import Alert from '@mui/material/Alert';
 
 
 
@@ -56,7 +57,7 @@ const AddBlogForm = () => {
   // const searchparam = new URLSearchParams(location.search);
   // let type = searchparam.get("type");
 
-  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading } = useSelector((state) => state.data);
+  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading,sucessStatus } = useSelector((state) => state.data);
   // const { error } = useSelector((state) => state.data.errorMessage);
   // console.log("errorData", error)
 
@@ -65,6 +66,7 @@ const AddBlogForm = () => {
 
 
   console.log(getblogloading, "ffffffffff ffff")
+  console.log("status",sucessStatus)
 
   const {
     register,
@@ -579,7 +581,12 @@ const AddBlogForm = () => {
         </Box>
         <Grid item xs={12} sm={5} />
 
+        {
+          sucessStatus== 201 && <Alert severity="success">Suceessfully added data!</Alert>
+        }
+
       </form>
+
     </React.Fragment>
   );
 };

@@ -15,6 +15,7 @@ export const AddBlog = (blogdata) => (dispatch) => {
       dispatch({
         type: types.ADD_BLOG_DATA_SUCCESS,
         payload: res.data,
+        postStatus:res.status,
       });
     });
   } catch (error) {

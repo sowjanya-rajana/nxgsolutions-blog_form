@@ -44,7 +44,7 @@ const initialState = {
   editcategory: {},
   editcategoryloading: false,
 
-
+   sucessStatus:""
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -62,6 +62,7 @@ const usersReducer = (state = initialState, action) => {
         blogdata: action.payload,
 
         blogloading: false,
+        sucessStatus: action.postStatus
       };
     case types.ADD_BLOG_DATA_FAIL:
       return {
