@@ -69,7 +69,7 @@ function AppBarAddBlog(props) {
                             flexGrow: 1,
                         }}
                     >
-                        NXG ecom
+                        NXG ECOMMERCE
                     </Typography>
 
                     {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}> */}
@@ -97,7 +97,7 @@ function AppBarAddBlog(props) {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
-                            fontSize:12,
+                            fontSize: 12,
                             // flexGrow: 1,
                         }}
                     >

@@ -159,7 +159,7 @@ const BlogCategoryForm = () => {
                             {/* <Paper elevation={3} sx={{ marginRight: "15%", marginLeft: "15%" }}> */}
                             <Box sx={{ padding: 5, }}>
                                 <Typography variant="h6" textAlign={left} gutterBottom sx={{ paddingBottom: 5 }}>
-                                    Blog
+                                    Blog Category
                                 </Typography>
 
                                 <Grid container spacing={3} textAlign={left} >
