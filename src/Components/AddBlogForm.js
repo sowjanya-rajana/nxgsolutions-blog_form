@@ -22,7 +22,8 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import { useSelector, useDispatch } from "react-redux";
 //import { useNavigate, useParams } from "react-router-dom";
-import { AddBlog, blogImages, deleteCategory, loadblogdata } from "../Redux/actions/categoryAction";
+import { AddBlog } from "../Redux/actions/blogAction";
+import { deleteCategory, loadblogdata } from "../Redux/actions/categoryAction";
 import { Form } from "react-bootstrap";
 import { Skeleton } from "@mui/material";
 
@@ -57,7 +58,7 @@ const AddBlogForm = () => {
   // const searchparam = new URLSearchParams(location.search);
   // let type = searchparam.get("type");
 
-  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading, sucessStatus } = useSelector((state) => state.data);
+  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading, sucessStatus } = useSelector((state) => state.blogdata);
   // const { error } = useSelector((state) => state.data.errorMessage);
   // console.log("errorData", error)
 
@@ -155,9 +156,9 @@ const AddBlogForm = () => {
   const uploadImg = (e) => {
     e.preventDefault();
     dispatch(
-      blogImages({
-        file: blogImageURL,
-      })
+      // blogImages({
+      //   file: blogImageURL,
+      // })
     );
   };
 

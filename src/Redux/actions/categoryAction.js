@@ -1,56 +1,9 @@
-import * as types from "../actionType";
+import { async } from "q";
+import * as types from "../actionType/categoryActionType";
 import axios from "axios";
 
-export const AddBlog = (blogdata) => (dispatch) => {
-  dispatch({
-    type: types.ADD_BLOG_DATA_REQUEST,
-    payload: {},
-  });
-  try {
-    axios
-      .post("https://6422806b001cb9fc20282210.mockapi.io/blog", blogdata)
-      .then((res) => {
-        console.log("blog data", res);
-        dispatch({
-          type: types.ADD_BLOG_DATA_SUCCESS,
-          payload: res.data,
-        });
-      });
-  } catch (error) {
-    console.log("error-addblog", error.message);
-    dispatch({
-      type: types.ADD_BLOG_DATA_FAIL,
-      payload: error.message,
-    });
-  }
-};
 
-export const getblogdata = () => async (dispatch) => {
-  console.log("checkkkkblogload");
-  dispatch({
-    type: types.GET_BLOG_REQUEST,
 
-    // payload: {},
-  });
-  try {
-    axios
-      .get("https://6422806b001cb9fc20282210.mockapi.io/blog")
-      .then((res) => {
-        console.log("blogdatarequest", res);
-        dispatch({
-          type: types.GET_BLOG_SUCCESS,
-          payload: res.data,
-        });
-      });
-  } catch (error) {
-    console.log("error-Loadblog", error.toJSON().message);
-    console.log("blogerror", error.message);
-    dispatch({
-      type: types.GET_BLOG_FAIL,
-      payload: error.message,
-    });
-  }
-};
 
 export const loadblogdata = () => async (dispatch) => {
   console.log("checkkkkblogload");
@@ -60,15 +13,16 @@ export const loadblogdata = () => async (dispatch) => {
     // payload: {},
   });
   try {
-    axios
-      .get("http://192.168.1.20:8080/blog/blogcategory")
-      .then((res) => {
-        console.log("blogrequest", res);
-        dispatch({
-          type: types.GET_BLOG_DATA_SUCCESS,
-          payload: res.data,
-        });
-      });
+    const getCategoryData =
+      await axios
+        .get(process.env.REACT_APP_BLOG_ADMIN_API + "/blog/blogcategory")
+    // .then((res) => {
+    // console.log("blogrequest", res);
+    dispatch({
+      type: types.GET_BLOG_DATA_SUCCESS,
+      payload: getCategoryData.data,
+    });
+    // });
   } catch (error) {
     console.log("error-Loadblog", error.toJSON().message);
     console.log("errorblogggggggggggggggg", error.message);
@@ -79,47 +33,9 @@ export const loadblogdata = () => async (dispatch) => {
   }
 };
 
-export const loadFile = () => async (dispatch) => {
-  dispatch({
-    type: types.GET_FILE_REQUEST,
-    payload: {},
-  });
-  try {
-    axios.get("http://localhost:3000/apidata").then((response) => {
-      dispatch({
-        type: types.GET_FILE_SUCCESS,
-        payload: response.data,
-      });
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-export const blogImages = (obj) => async (dispatch) => {
-  console.log("formData", obj);
-  dispatch({
-    type: types.BLOG_IMAGES_REQUEST,
-    payload: {},
-  });
-  try {
-    const responseofImage = await axios.post(
-      "http://localhost:3000/apidata",
-      obj
-    );
-    console.log("responseofImage", responseofImage);
 
-    dispatch({
-      type: types.BLOG_IMAGES_SUCCESS,
-      payload: responseofImage,
-    });
-  } catch (error) {
-    dispatch({
-      type: types.BLOG_IMAGES_FAILURE,
-      payload: error,
-    });
-  }
-};
+
 
 export const blogcategory = (obj) => async (dispatch) => {
   console.warn("formData", obj);
@@ -170,7 +86,7 @@ export const blogcategory = (obj) => async (dispatch) => {
       redirect: "follow",
     };
 
-    fetch("http://192.168.1.20:8080/blog/blogcategoryvalue", requestOptions)
+    fetch("http://192.168.1.21:8080/blog/blogcategoryvalue", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

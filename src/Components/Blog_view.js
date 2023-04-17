@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { loadFile } from "../Redux/actions/categoryAction";
+import { loadFile } from "../Redux/actions/blogAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "react-bootstrap";
 const Blog_view = () => {

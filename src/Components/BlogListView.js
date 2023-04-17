@@ -23,8 +23,9 @@ import {
 
   loadblogdata,
   AddBlog,
-  getblogdata,
+
 } from "../Redux/actions/categoryAction";
+import { getblogdata, } from "../Redux/actions/blogAction";
 import { CardMedia, Skeleton } from '@mui/material';
 import { Card } from 'react-bootstrap';
 
@@ -56,7 +57,7 @@ const BlogListView = () => {
     blogloading,
     // getblogdata,
 
-  } = useSelector((state) => state.data);
+  } = useSelector((state) => state.blogdata);
   // const { errorMessage } = useSelector((state) => state.data);
   console.log("errorData", errorMessage)
 
