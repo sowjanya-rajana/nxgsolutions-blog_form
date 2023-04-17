@@ -97,6 +97,9 @@ const BlogCategoryForm = () => {
 
     const [status, setStatus] = useState('Active');
 
+    const [CategorymetaData, setcategoryMetaData] = useState("");
+    const [SeoCategoryTitle, setSeoCategoryTitle] = useState("");
+
     const handleChange = (event) => {
         console.log("onchange", event);
         setCategory(event.target.value);
@@ -115,7 +118,7 @@ const BlogCategoryForm = () => {
 
     const handleblogImage = (e) => {
         const categoryimage = e.target.files[0];
-        setblogImage(URL.createObjectURL(categoryimage));
+        setblogImage(categoryimage);
     };
 
     //   const uploadcategoryImg = (e) => {
@@ -130,15 +133,13 @@ const BlogCategoryForm = () => {
 
     const toaddCategory = (e) => {
         try {
-            let data = { category, blogcategoryImageURL, status };
+            let data = {category,CategorymetaData,status,SeoCategoryTitle, CategorymetaData,blogcategoryImageURL};
             // e.preventDefault();
 
             dispatch(
                 blogcategory(data));
 
-            setValue("category", "");
-            setValue("blogcategoryImageURL", "");
-            setValue("status", "");
+    
 
             console.warn("mainpage", data);
         } catch (e) {
@@ -206,9 +207,9 @@ const BlogCategoryForm = () => {
 
 
                                         />
-                                        {errors?.category?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>>>This name is required</p>)}
-                                        {errors?.category?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>>>Name is too long</p>)}
-                                        {errors?.category?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>>>name is too short</p>)}
+                                        {errors?.category?.type === "required" && (<p style={{ color: "red", textAlign: "left" }}>This name is required</p>)}
+                                        {errors?.category?.type === "maxLength" && (<p style={{ color: "red", textAlign: "left" }}>Name is too long</p>)}
+                                        {errors?.category?.type === "minLength" && (<p style={{ color: "red", textAlign: "left" }}>name is too short</p>)}
 
                                     </Grid>
 
@@ -251,6 +252,127 @@ const BlogCategoryForm = () => {
 
 
                                     </Grid>
+
+
+                                    <Grid item xs={12} lg={12} md={12} sm={12}>
+           
+
+              {/* <Box sx={{ padding: 5 }}> */}
+
+                <Typography
+                  variant="h6"
+                  textAlign="left"
+                  gutterBottom
+                  sx={{ paddingBottom: 5 }}
+
+                >
+                  Blog SEO
+                </Typography>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={12} md={12} lg={2}>
+                    <InputLabel
+                      sx={{
+                        display: "flex",
+                        justifyContent: "left",
+                        fontWeight: 700,
+                        // padding: 1,
+                      }}
+                    >
+                      Blog Title
+                    </InputLabel>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={10}>
+                    <TextField
+                      id="blogtitle"
+                      name="SeoCategoryTitle"
+                      //   label="Enter Blog Title"
+                      
+                      size="small"
+                      autoComplete="off"
+                      variant="outlined"
+                      placeholder="Blog Title"
+                      {...register("SeoCategoryTitle", {
+                        required: true,
+                        onChange: (e) => {
+                            setSeoCategoryTitle(e.target.value);
+                        },
+                        value: SeoCategoryTitle,
+                        maxLength: 50,
+                        minLength: 3,
+                        // autoComplete: "off",
+                        // variant: "outlined",
+                      })}
+                    />
+                    {errors?.blogTitle?.type === "required" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        This is required field
+                      </p>
+                    )}
+                    {errors?.blogTitle?.type === "maxLength" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        Name is too long
+                      </p>
+                    )}
+                    {errors?.blogTitle?.type === "minLength" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        Name is too short
+                      </p>
+                    )}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={2}>
+                    <InputLabel
+                      sx={{
+                        display: "flex",
+                        justifyContent: "left",
+                        fontWeight: 700,
+                        // padding: 1,
+                      }}
+                    >
+                      Meta Description
+                    </InputLabel>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={10}>
+                    <TextField
+                      id="outlined-multiline-static"
+                      //   label="Meta Description"
+                      name="CategorymetaData"
+                      multiline
+                      fullWidth
+                      rows={4}
+                      placeholder="Meta Description"
+                      {...register("CategorymetaData", {
+                        required: true,
+                        onChange: (e) => {
+                            setcategoryMetaData(e.target.value);
+                        },
+                        value: CategorymetaData,
+                        maxLength: 50,
+                        minLength: 3,
+                        // autoComplete: "off",
+                        // variant: "outlined",
+                      })}
+                    />
+                    {errors?.metaData?.type === "required" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        This is required field
+                      </p>
+                    )}
+                    {errors?.metaData?.type === "maxLength" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        Name is too long
+                      </p>
+                    )}
+                    {errors?.metaData?.type === "minLength" && (
+                      <p style={{ color: "red", textAlign: "left" }}>
+                        Name is too short
+                      </p>
+                    )}
+                  </Grid>
+                </Grid>
+
+              {/* </Box> */}
+           
+          </Grid>
 
                                     <Grid item xs={12} sm={12} md={12} lg={12}>
                                         {/* <FormControl> */}

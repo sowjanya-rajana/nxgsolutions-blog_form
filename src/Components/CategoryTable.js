@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import * as React from "react";
 
 import { useState } from "react";
@@ -35,12 +35,17 @@ import { Card } from 'react-bootstrap';
 
 const CategoryTable = (props) => {
 
+    let paramData = useParams("id");
+    const updateCategory = paramData.id;
+  
+    const location = useLocation();
+    const searchparam = new URLSearchParams(location.search);
+    let type = searchparam.get("type");
+
 
 
     let dispatch = useDispatch();
-    // const navigate = useNavigate();
 
-    //let paramData = useParams("id");
     const updateID = 0;
     console.warn("propsdata category", props);
     // const location = useLocation();
@@ -133,8 +138,10 @@ const CategoryTable = (props) => {
 
                                     <TableCell align="center">SNo</TableCell>
                                     <TableCell align="center">Category</TableCell>
-                                    <TableCell align="center">Image</TableCell>
+                                    <TableCell align="center">SEO Tittle</TableCell>
+                                    <TableCell align="center">SEO Meta Description</TableCell>
                                     <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Image</TableCell>
                                     <TableCell align="center">Action</TableCell>
 
                                 </TableRow>
@@ -156,17 +163,19 @@ const CategoryTable = (props) => {
                                                 {/* <TableRow key={key}> */}
                                                 <TableCell align="center" component="th" scope="row"  >{key + 1} </TableCell>
 
-                                                <TableCell align="center">{row.category}</TableCell>
-
+                                                <TableCell align="center">{row.blogCategoryName}</TableCell>
+                                                <TableCell align="center">{row.seoTitle}</TableCell>
+                                                <TableCell align="center">{row.seoMetaDesc}</TableCell>
+                                                <TableCell align="center">{row.Status}</TableCell>
                                                 <TableCell align="center">
-
-                                                    <Grid item xs={4} sm={4} md={4} lg={4}>
-                                                        <Card sx={{ maxWidth: 200 }}>
-                                                            <CardMedia sx={{ height: 100 }} image={row.blogcategoryImageURL} />
-                                                        </Card>
+                                                    
+                                                <Grid item xs={4} sm={4} md={4} lg={4}>
+                    <Card sx={{ maxWidth: 200 }}>
+                      <CardMedia sx={{ height: 50 }} image ={row.categoryImage.categoryImageDownloadUrl} />
+                                                    </Card>
                                                     </Grid>
-                                                </TableCell>
-                                                <TableCell align="center">{row.status}</TableCell>
+                                                    </TableCell>
+                                               
                                                 <TableCell align="center">
                                                     <Button ><EditIcon /></Button>
                                                     <Button
