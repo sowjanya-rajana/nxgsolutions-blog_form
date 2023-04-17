@@ -1,5 +1,5 @@
 import React from "react";
-import AppBarAddBlog from "../Components/AppBarAddBlog";
+import AppBar from "../Components/BlogAppBar";
 import LeftBar from "../Components/LeftBar";
 import LeftNavBar from "../Components/LeftNavBar";
 import BlogCategoryForm from "../Components/BlogCategoryForm";

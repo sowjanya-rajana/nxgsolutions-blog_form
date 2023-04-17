@@ -22,7 +22,7 @@ import BlogCategoryForm from './BlogCategoryForm';
 import AddBlogForm from './AddBlogForm';
 import { useParams, useLocation, useSearchParams, useNavigate, NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom'
-import AppBarAddBlog from './AppBarAddBlog';
+import BlogAppBar from './BlogAppBar';
 import Blog_view from './Blog_view';
 
 
@@ -152,7 +152,7 @@ function LeftNavBar(props) {
 
             }}>
                 <CssBaseline />
-                <AppBarAddBlog func={get_props} />
+                <BlogAppBar func={get_props} />
                 <Box
                     component="nav"
                     sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}

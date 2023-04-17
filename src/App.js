@@ -8,7 +8,7 @@ import Main from "./Screens/Main";
 import RichTextEditor from "./Screens/RichTextEditor";
 import TextEditor from "./Screens/TextEditor";
 
-import AppBarAddBlog from "./Components/AppBarAddBlog";
+import AppBar from "./Components/BlogAppBar";
 import LeftBar from "./Components/LeftBar";
 import DashboardScreen from "./Screens/DashboardScreen";
 import LinkScreen from "./Screens/LinkScreen";

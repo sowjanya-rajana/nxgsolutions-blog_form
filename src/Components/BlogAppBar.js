@@ -13,11 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LeftNavBar from './LeftNavBar';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 
 
-function AppBarAddBlog(props) {
+function BlogAppBar(props) {
     // const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -83,6 +84,7 @@ function AppBarAddBlog(props) {
                     >
                         <MenuIcon />
                     </IconButton> */}
+
                     <Typography
                         variant="h6"
                         noWrap
@@ -101,6 +103,7 @@ function AppBarAddBlog(props) {
                             // flexGrow: 1,
                         }}
                     >
+                        <ArrowBackIcon />
                         Back to manage
                         Store
                     </Typography>
@@ -117,4 +120,4 @@ function AppBarAddBlog(props) {
         </AppBar>
     );
 }
-export default AppBarAddBlog;
+export default BlogAppBar;

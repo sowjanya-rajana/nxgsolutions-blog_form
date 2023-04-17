@@ -1,5 +1,5 @@
 import React from "react";
-import AppBarAddBlog from "../Components/AppBarAddBlog";
+import AppBar from "../Components/BlogAppBar";
 import LeftBar from "../Components/LeftBar";
 import LeftNavBar from "../Components/LeftNavBar";
 import BlogCategoryForm from "../Components/BlogCategoryForm";
@@ -11,17 +11,17 @@ import AddBlogForm from "../Components/AddBlogForm";
 const drawerWidth = 240;
 
 function CategoryScreen() {
-    return (
-        <>
-            <div>
-                <Box sx={{ display: 'flex' }}>
-                    {/* <AppBarAddBlog /> */}
-                    {/* <LeftBar /> */}
-                    <LeftNavBar />
-                    {/* <BlogCategoryForm /> */}
-                    <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
-                        <Toolbar />
-                        {/* <div>
+  return (
+    <>
+      <div>
+        <Box sx={{ display: 'flex' }}>
+          {/* <AppBarAddBlog /> */}
+          {/* <LeftBar /> */}
+          <LeftNavBar />
+          {/* <BlogCategoryForm /> */}
+          <Box component="main" sx={{ flexGrow: 1, p: 3, width: { md: `calc(100% - ${drawerWidth}px)` } }}>
+            <Toolbar />
+            {/* <div>
             {(() => {
               switch (value.url) {
                 case '/dashboard':
@@ -36,21 +36,21 @@ function CategoryScreen() {
               }
             })()}
           </div> */}
-                        <BlogCategoryForm />
+            <BlogCategoryForm />
 
 
 
 
 
 
-                    </Box>
+          </Box>
 
-                </Box>
+        </Box>
 
 
-            </div >
-        </>
-    )
+      </div >
+    </>
+  )
 }
 
 export default CategoryScreen
