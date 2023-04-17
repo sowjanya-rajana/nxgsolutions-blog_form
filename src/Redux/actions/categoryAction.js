@@ -1,4 +1,4 @@
-import * as types from "./actionType";
+import * as types from "../actionType";
 import axios from "axios";
 
 export const AddBlog = (blogdata) => (dispatch) => {
@@ -158,7 +158,7 @@ export const blogcategory = (obj) => async (dispatch) => {
     var formdata = new FormData();
     formdata.append("categoryName", obj.category);
     formdata.append("seoTitle", obj.SeoCategoryTitle);
-    formdata.append("seoMetaDesc",obj.CategorymetaData);
+    formdata.append("seoMetaDesc", obj.CategorymetaData);
     formdata.append(
       "imgData",
       obj.blogcategoryImageURL

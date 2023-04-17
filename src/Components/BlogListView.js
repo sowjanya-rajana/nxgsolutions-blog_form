@@ -24,7 +24,7 @@ import {
   loadblogdata,
   AddBlog,
   getblogdata,
-} from "../Redux/action";
+} from "../Redux/actions/categoryAction";
 import { CardMedia, Skeleton } from '@mui/material';
 import { Card } from 'react-bootstrap';
 
@@ -67,6 +67,7 @@ const BlogListView = () => {
 
   useEffect(() => {
     dispatch(getblogdata());
+    console.log("check data ");
   }, [dispatch]);
 
   // const [Title, setTitle] = useState("");

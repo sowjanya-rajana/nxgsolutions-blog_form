@@ -22,7 +22,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 
 import { useSelector, useDispatch } from "react-redux";
 //import { useNavigate, useParams } from "react-router-dom";
-import { AddBlog, blogImages, deleteCategory, loadblogdata } from "../Redux/action";
+import { AddBlog, blogImages, deleteCategory, loadblogdata } from "../Redux/actions/categoryAction";
 import { Form } from "react-bootstrap";
 import { Skeleton } from "@mui/material";
 
@@ -57,7 +57,7 @@ const AddBlogForm = () => {
   // const searchparam = new URLSearchParams(location.search);
   // let type = searchparam.get("type");
 
-  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading,sucessStatus } = useSelector((state) => state.data);
+  const { addStatus, blog, categoryLoading, deletecategory, deleteloading, getblogloading, sucessStatus } = useSelector((state) => state.data);
   // const { error } = useSelector((state) => state.data.errorMessage);
   // console.log("errorData", error)
 
@@ -66,7 +66,7 @@ const AddBlogForm = () => {
 
 
   console.log(getblogloading, "ffffffffff ffff")
-  console.log("status",sucessStatus)
+  console.log("status", sucessStatus)
 
   const {
     register,
@@ -582,7 +582,7 @@ const AddBlogForm = () => {
         <Grid item xs={12} sm={5} />
 
         {
-          sucessStatus== 201 && <Alert severity="success">Suceessfully added data!</Alert>
+          sucessStatus == 201 && <Alert severity="success">Suceessfully added data!</Alert>
         }
 
       </form>

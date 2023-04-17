@@ -26,7 +26,7 @@ import {
     loadblogdata,
     AddBlog,
     deleteCategory,
-} from "../Redux/action";
+} from "../Redux/actions/categoryAction";
 import { CardMedia, Skeleton } from '@mui/material';
 import { Card } from 'react-bootstrap';
 
@@ -37,7 +37,7 @@ const CategoryTable = (props) => {
 
     let paramData = useParams("id");
     const updateCategory = paramData.id;
-  
+
     const location = useLocation();
     const searchparam = new URLSearchParams(location.search);
     let type = searchparam.get("type");
@@ -168,14 +168,14 @@ const CategoryTable = (props) => {
                                                 <TableCell align="center">{row.seoMetaDesc}</TableCell>
                                                 <TableCell align="center">{row.Status}</TableCell>
                                                 <TableCell align="center">
-                                                    
-                                                <Grid item xs={4} sm={4} md={4} lg={4}>
-                    <Card sx={{ maxWidth: 200 }}>
-                      <CardMedia sx={{ height: 50 }} image ={row.categoryImage.categoryImageDownloadUrl} />
-                                                    </Card>
+
+                                                    <Grid item xs={4} sm={4} md={4} lg={4}>
+                                                        <Card sx={{ maxWidth: 200 }}>
+                                                            <CardMedia sx={{ height: 50 }} image={row.categoryImage.categoryImageDownloadUrl} />
+                                                        </Card>
                                                     </Grid>
-                                                    </TableCell>
-                                               
+                                                </TableCell>
+
                                                 <TableCell align="center">
                                                     <Button ><EditIcon /></Button>
                                                     <Button
