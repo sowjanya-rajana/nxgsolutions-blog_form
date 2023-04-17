@@ -69,7 +69,7 @@ const BlogListView = () => {
   useEffect(() => {
     dispatch(getblogdata());
     console.log("check data ");
-  }, [dispatch]);
+  }, []);
 
   // const [Title, setTitle] = useState("");
   // const [blogcategory, setBlogcategory] = useState("");

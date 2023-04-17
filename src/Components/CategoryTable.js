@@ -76,7 +76,7 @@ const CategoryTable = (props) => {
 
     useEffect(() => {
         dispatch(loadblogdata());
-    }, [dispatch, cate, categoryLoading, deletecategory, deleteloading]);
+    }, [dispatch]);
 
     // const [Title, setTitle] = useState("");
     // const [blogcategory, setBlogcategory] = useState("");
