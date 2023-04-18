@@ -15,7 +15,7 @@ const dashboardReducer = (state = initialState, action) => {
     case dashboardActionType.GET_FILE_REQUEST:
         return {
           ...state,
-          blogview: action.payload,
+          // blogview: action.payload,
           blogviewloading: true,
         };
       case dashboardActionType.GET_FILE_SUCCESS:
