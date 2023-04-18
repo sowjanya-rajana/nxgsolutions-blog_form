@@ -1,13 +1,7 @@
 import * as blogActionType from "../actionType/blogActionType";
 
 const initialState = {
-  users: [],
-  blog: {},
-
-  user: {},
-  loading: true,
-  errorMessage: "",
-
+ 
   deleteusers: [],
   deleteloading: false,
 
@@ -108,32 +102,7 @@ const blogReducer = (state = initialState, action) => {
         images: action.payload
       }
 
-
-
-
-
-
-
-
-
-
-    case blogActionType.GET_FILE_REQUEST:
-      return {
-        ...state,
-        users: action.payload,
-        loading: true,
-      };
-    case blogActionType.GET_FILE_SUCCESS:
-      return {
-        ...state,
-        users: action.payload,
-        loading: false,
-      };
-
-
-
-
-
+      
     default:
       return state;
   }

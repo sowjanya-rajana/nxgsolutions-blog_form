@@ -1,4 +1,4 @@
-import { async } from "q";
+
 import * as types from "../actionType/categoryActionType";
 import axios from "axios";
 
@@ -58,7 +58,7 @@ export const blogcategory = (obj) => async (dispatch) => {
   });
   try {
     // const responseofImage = await axios.post(
-    //   "http://192.168.1.20:8080/blog/blogcategoryvalue",
+    //   "http://192.168.1.16:8080/blog/blogcategoryvalue",
     //   formData
     // );
     // console.log("responseofImage", responseofImage);
@@ -86,7 +86,7 @@ export const blogcategory = (obj) => async (dispatch) => {
       redirect: "follow",
     };
 
-    fetch("http://192.168.1.21:8080/blog/blogcategoryvalue", requestOptions)
+    fetch("http://192.168.1.16:8080/blog/blogcategoryvalue", requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

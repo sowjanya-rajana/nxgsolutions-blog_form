@@ -37,11 +37,6 @@ export const BLOG_IMAGES_FAILURE = "BLOG_IMAGES_FAILURE"
 
 
 
-export const GET_FILE_REQUEST = "GET_BLOG_REQUEST";
-export const GET_FILE_SUCCESS = "GET_BLOG_SUCCESS";
-
-
-
 
 
 
