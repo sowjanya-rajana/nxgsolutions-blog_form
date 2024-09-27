@@ -1,0 +1,168 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.leftbar{
+  width: 200px;
+  background: #1976d2;
+  color: #ffff;
+  min-height: 450px;
+  overflow: auto;
+  text-align: center;
+}
+.mshover{
+background-color :#ffff;
+color: black;
+ 
+}
+.mshover:hover{
+  color: #ffff;
+  background-color: #c9cdd2;
+  
+}
+
+.active{
+  color: #ffff;
+  background-color: #0d6efd;
+}
+.ql-editor{
+  min-height:200px;
+}
+/* List:hover{
+  background-color: #0d6efd;
+} */
+ .menu-icon{
+  display: none;
+ }
+
+
+ @media screen and (max-width:864px){
+.log{
+  display: flex;
+  position:absolute;
+  top:15px;
+  right:20px;
+}
+.nav-link{
+  display: none;
+}
+.nav-mobile{
+  position: absolute;
+  display:block;
+  list-style: none;
+  left: 0;
+  transition: all 0.5s ease-out;
+  width: 100%;
+}
+ }
+
+@keyframes  App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .card {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.card_image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  scale: 1.15;
+  transition: opacity 0.25s,
+   scale 0.35s;
+}
+
+.card:hover .card_image {
+  opacity: 0.5;
+  scale: 1;
+}
+
+
+.card_body {
+
+  position: absolute;
+  inset: 0;
+  padding: 50px;
+  color: #fff;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  row-gap: 15px;
+  justify-content: center;
+
+}
+
+.card_body::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 2px solid #fff;
+  opacity: 0;
+  scale: 1.25;
+  transition: opacity 0.25s,
+      scale 0.25s;
+}
+
+.card:hover .card_body::before {
+  opacity: 1;
+  scale: 1;
+}
+
+
+.card_title {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 5);
+}
+
+.card_description {
+  font-size: 14px;
+  opacity: 0;
+  translate: -25px;
+  transition: opacity 0.25s, translate 0.25s;
+}
+
+.card:hover .card_description {
+  opacity: 1;
+
+  translate: 0;
+} */
